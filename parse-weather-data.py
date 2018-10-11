@@ -17,9 +17,6 @@ OUTPUT_CSV_FILE = 'weather_data_final.csv'
 weather_data_frame = pd.read_csv('weather-Rome_mod.csv')
 
 
-print('hello')
-
-
 def round_the_clock(date_time_str):
     '''
     Advance hour by one and reset the minutes
@@ -42,6 +39,34 @@ def round_the_clock(date_time_str):
     return new_time_str
 
 
+def check_empty_data_values(row_value_array):
+    '''
+        Check the data for empty values. 
+        All our values (except the datetime) are numerical so now just 
+        populating possible empty values with 0.
+    '''
+    if row_value_array[0] == '':
+        raise ValueError('Date not found from the source data!', row_value_array)
+    if row_value_array[1] == '':
+        row_value_array[1] = 0
+        print('T was empty in source data.', row_value_array)
+    if row_value_array[2] == '':
+        row_value_array[2] = 0
+        print('P was empty in source data.', row_value_array)
+    if row_value_array[3] == '':
+        row_value_array[3] = 0
+        print('U was empty in source data.', row_value_array)
+    if row_value_array[4] == '':
+        row_value_array[4] = 0
+        print('Ff empty in source data.', row_value_array)
+    if row_value_array[5] == '':
+        row_value_array[5] = 0
+        print('Td empty in source data.', row_value_array)
+
+    # TODO: Is this ok?
+    return row_value_array
+
+
 def write_to_new_csv(dataframe): 
     '''
         Create new csv file from the given dataframe.
@@ -58,7 +83,7 @@ def write_to_new_csv(dataframe):
         buffer_row_arr = []
         for index, row in dataframe.iterrows():
 
-            row_value_array = row[0].split(';')
+            row_value_array = check_empty_data_values(row[0].split(';'))
             
             if row_value_array[0][-2:] == '50':
                 buffer_row_arr = row_value_array
@@ -70,20 +95,25 @@ def write_to_new_csv(dataframe):
                     average_arr = []
 
                     # Calculate averages
-                    average_arr.append(round_the_clock(row_value_array[0])) 
-                    average_arr.append((float(row_value_array[1]) + float(buffer_row_arr[1]))/2) # temperature
-                    average_arr.append((float(row_value_array[2]) + float(buffer_row_arr[2]))/2) # P
-                    average_arr.append((float(row_value_array[3]) + float(buffer_row_arr[3]))/2) # U
-                    average_arr.append((float(row_value_array[4]) + float(buffer_row_arr[4]))/2) # Ff
-                    average_arr.append((float(row_value_array[5]) + float(buffer_row_arr[5]))/2) # Td
+                    try:
+                        average_arr.append(round_the_clock(row_value_array[0])) 
+                        average_arr.append((float(row_value_array[1]) + float(buffer_row_arr[1]))/2) # temperature
+                        average_arr.append((float(row_value_array[2]) + float(buffer_row_arr[2]))/2) # P
+                        average_arr.append((float(row_value_array[3]) + float(buffer_row_arr[3]))/2) # U
+                        average_arr.append((float(row_value_array[4]) + float(buffer_row_arr[4]))/2) # Ff
+                        average_arr.append((float(row_value_array[5]) + float(buffer_row_arr[5]))/2) # Td
+                    except ValueError as error:
+                        print('ValueError: ', error)
+                        print(' Current row_value_array ', row_value_array)
+                        print(' Current buffer_row_arr ', buffer_row_arr)
 
                     filewriter.writerow(average_arr)
                     buffer_row_arr = []
 
         
         
-sub_data_frame = weather_data_frame.head(10 * 47) # n days
-print(sub_data_frame)
-write_to_new_csv(sub_data_frame)
+#sub_data_frame = weather_data_frame.head(100 * 47) # n days
+#print(sub_data_frame)
+#write_to_new_csv(sub_data_frame)
 
-#write_to_new_csv(weather_data_frame)
+write_to_new_csv(weather_data_frame)
