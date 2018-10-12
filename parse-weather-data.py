@@ -12,9 +12,11 @@ import csv
 
 # the destination file created from from the source data
 OUTPUT_CSV_FILE = 'weather_data_final.csv'
+# the source data file
+INPUT_CSV_FILE = 'weather-Rome_mod.csv'
 
 # read the "raw" source data 
-weather_data_frame = pd.read_csv('weather-Rome_mod.csv')
+weather_data_frame = pd.read_csv(INPUT_CSV_FILE)
 
 
 def round_the_clock(date_time_str):
@@ -117,3 +119,10 @@ def write_to_new_csv(dataframe):
 #write_to_new_csv(sub_data_frame)
 
 write_to_new_csv(weather_data_frame)
+
+
+# some stats for sanity check
+weather_data = pd.read_csv(OUTPUT_CSV_FILE)
+print('Columns: ', weather_data.columns.tolist())
+print(weather_data.describe())
+
