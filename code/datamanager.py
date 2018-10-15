@@ -18,7 +18,6 @@ def get_weather_data():
     """
     data = pd.io.parsers.read_csv('../weather.csv',
                                   index_col=0, parse_dates=True).sort_index()
-    print('Weather Data Set\n{}'.format(data.head()))
     return data
 
 
