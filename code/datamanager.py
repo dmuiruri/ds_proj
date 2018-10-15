@@ -16,7 +16,7 @@ def get_weather_data():
 
     Pulls data from the local directory and returns a dataframe
     """
-    data = pd.io.parsers.read_csv('../weather_data_final.csv',
+    data = pd.io.parsers.read_csv('../weather.csv',
                                   index_col=0, parse_dates=True).sort_index()
     print('Weather Data Set\n{}'.format(data.head()))
     return data
