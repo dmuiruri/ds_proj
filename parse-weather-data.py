@@ -31,7 +31,7 @@ def round_the_clock(date_time_str):
     new_time_str = ''
     # 18.05.2018 22:20
     if date_time_str[-5:-3] == '23':
-        new_time_str = date_time_str[:11] + '00:00'
+        new_time_str = date_time_str[:11] + '24:00'
     else:
         new_hour = str(int(float(date_time_str[-5:-3])) + 1)
         if len(new_hour) == 1:
