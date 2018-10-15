@@ -14,9 +14,20 @@ def get_weather_data():
     """
     Pull weather data.
 
-    Pulls data from the local directory and returns a dataframe
+    Pulls data from the local directory and returns df of weather features
     """
     data = pd.io.parsers.read_csv('../weather.csv',
                                   index_col=0, parse_dates=True).sort_index()
     print('Weather Data Set\n{}'.format(data.head()))
     return data
+
+
+def get_electricity_data():
+    """
+    Fetch electricity consumption dataself.
+
+    Returns a dataset of
+    """
+    data = pd.io.parsers.read_csv('../energy_industrial.csv',
+                                  index_col=0, parse_dates=True)
+    return data['Demand/Usage']
