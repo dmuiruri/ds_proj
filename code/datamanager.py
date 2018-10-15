@@ -22,11 +22,11 @@ def get_weather_data():
     return data
 
 
-def get_electricity_data():
+def get_industrial_electricity_data():
     """
-    Fetch electricity consumption dataself.
+    Fetch industrial electricity consumption data.
 
-    Returns a dataset of
+    Returns a series of hourly consumption data in kWh.
     """
     data = pd.io.parsers.read_csv('../energy_industrial.csv',
                                   index_col=0, parse_dates=True)
