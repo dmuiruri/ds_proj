@@ -70,6 +70,8 @@ weather_data['orig_datetime'] = weather_data['DateTime']
 # set the DateTime column as the new index for the weather_data
 weather_data = weather_data.set_index('DateTime')
 
+weather_data = fill_missing_data_points(weather_data)
+
 print_head_and_tail(weather_data)
 
 # merge (resample) data by hour
@@ -132,6 +134,12 @@ missing_values(weather_resampled_monthly)
 # save to csv
 weather_resampled_monthly.to_csv('../data/monthly_resampled_weather_data.csv')
 
+def  fill_missing_data_points(data):
+    """"
+    Fills missing data points.
 
-
-
+    Instead of dropping the missing observations which could lead to
+    loss of other data points, we can pad the gaps using linear
+    interpolation methods or other relevant approaches.
+    """
+    return data.interpolate()

@@ -4,4 +4,6 @@
 # VS Code stuff
 .vscode/
 
+# Emacs backup files
+*.*~
 
