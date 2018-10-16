@@ -1,2 +1,7 @@
 # ignore byte code
 *.pyc
+
+# VS Code stuff
+.vscode/
+
+
