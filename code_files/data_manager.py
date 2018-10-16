@@ -44,9 +44,9 @@ def get_ic_weather():
 
 
 if __name__ == '__main__':
-    print('Get weather data\n {}'.format(
+    print('Weather data\n {} \n'.format(
             get_weather_data().head()))
-    print('Get Industrial Electricity Consumtion Data\n{}'.format(
+    print('Industrial Electricity Consumtion Data\n{}\n'.format(
             get_industrial_electricity_data().head()))
-    print('Get weather and industrial electricity consumption\n{}'.format(
+    print('Weather and Industrial electricity consumption\n{}\n'.format(
             get_ic_weather().head()))
