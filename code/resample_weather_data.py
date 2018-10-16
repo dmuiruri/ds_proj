@@ -21,6 +21,15 @@ def print_head_and_tail(data_frame, note_str=None):
     print(data_frame.tail())
     print('\n')
 
+def missing_values(dataframe):
+    missing_values_list = dataframe.isnull().sum()
+    print('\nMissing values per column ----------------------------------------')
+    print(missing_values_list)
+
+    total_cells = np.product(dataframe.shape)
+    total_missing = missing_values_list.sum()
+    print('percent of data missing: ', (total_missing/total_cells) * 100)    
+
 
 file_h = pd.ExcelFile('../weather_rome.xls')
 
@@ -70,7 +79,7 @@ print_head_and_tail(weather_data)
 #weather_data.index = pd.to_datetime(weather_data.index)
 #print_head_and_tail(weather_data, 'after index to_datetime conversion')
 
-# this messes up the date index
+# resample data Hourly
 weather_resampled = weather_data.resample('H').mean()
 
 print_head_and_tail(weather_resampled, 'after resampling by HOUR')
@@ -86,7 +95,43 @@ missing_values_list = weather_resampled.isnull().sum()
 print('\nMissing values per column ----------------------------------------')
 print(missing_values_list)
 
+total_cells = np.product(weather_resampled.shape)
+total_missing = missing_values_list.sum()
+print('percent of data missing: ', (total_missing/total_cells) * 100)
+
 # save to csv
-weather_resampled.to_csv('../hourly_resampled_weather_data.csv')
+weather_resampled.to_csv('../data/hourly_resampled_weather_data.csv')
+
+# resample data daily
+weather_resampled_daily = weather_resampled.resample('D').mean()
+
+print('Shape of weather_resampled daily', weather_resampled_daily.shape)
+print_head_and_tail(weather_resampled_daily)
+missing_values(weather_resampled_daily)
+
+# save to csv
+weather_resampled_daily.to_csv('../data/daily_resampled_weather_data.csv')
+
+# resample data weekly
+weather_resampled_weekly = weather_resampled_daily.resample('W').mean()
+
+print('Shape of weather_resampled weekly', weather_resampled_weekly.shape)
+print_head_and_tail(weather_resampled_weekly)
+missing_values(weather_resampled_weekly)
+
+# save to csv
+weather_resampled_weekly.to_csv('../data/weekly_resampled_weather_data.csv')
+
+# resample data monthly
+weather_resampled_monthly = weather_resampled_daily.resample('M').mean()
+
+print('Shape of weather_resampled monthly', weather_resampled_monthly.shape)
+print_head_and_tail(weather_resampled_monthly)
+missing_values(weather_resampled_monthly)
+
+# save to csv
+weather_resampled_monthly.to_csv('../data/monthly_resampled_weather_data.csv')
+
+
 
 
