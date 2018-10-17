@@ -2,9 +2,10 @@
 layout: default
 ---
 
+[Link to page 1](./pages/another-page.html) | [Link to page 2](./pages/another-page.html) | [Link to page 3](./pages/another-page.html).
+
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-[Link to another page](./pages/another-page.html).
 
 There should be whitespace between paragraphs.
 
