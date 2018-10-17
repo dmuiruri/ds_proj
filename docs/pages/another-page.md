@@ -6,4 +6,6 @@ layout: default
 
 _yay_
 
-[back](./)
+[back](././)
+[back-2](./../)
+[back-3](./..)
