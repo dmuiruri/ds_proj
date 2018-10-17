@@ -97,7 +97,7 @@ end
 ![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
 
 ### Small image
-!Branching](https://github.com/dmuiruri/ds_proj/blob/master/building.png)
+![Branching](https://github.com/dmuiruri/ds_proj/blob/master/building.png)
 
 ### Large image
 
