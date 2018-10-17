@@ -98,7 +98,7 @@ end
 
 ### Large image
 
-![Branching] (https://github.com/dmuiruri/ds_proj/blob/master/building.png)
+![Branching](https://github.com/dmuiruri/ds_proj/blob/master/building.png)
 
 
 ### Definition lists can be used with HTML syntax.
