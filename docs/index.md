@@ -2,7 +2,7 @@
 layout: default
 ---
 
-[Link to page 1](./pages/another-page.html) | [Link to page 2](./pages/another-page.html) | [Link to page 3](./pages/another-page.html).
+[Link to page 1](./pages/another-page.html) | [Link to page 2](./pages/another-page.html) | [Link to page 3](./pages/another-page.html). | [Link to page 4](./pages/another-page.html)
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
@@ -99,7 +99,7 @@ end
 
 ### Just an image header H3
 
-![Testing testing](./assets/images/building.png)
+![This img is in assets/images folder](./assets/images/building.png)
 
 
 ### Definition lists can be used with HTML syntax.
