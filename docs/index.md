@@ -96,9 +96,9 @@ end
 
 ![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
 
-### Large image
+### Just an image header H3
 
-![Branching](https://github.com/dmuiruri/ds_proj/blob/master/building.png)
+![Testing testing](./assets/images/building.png)
 
 
 ### Definition lists can be used with HTML syntax.
