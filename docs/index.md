@@ -4,18 +4,32 @@ layout: default
 
 [Link to page 1](./pages/another-page.html) | [Link to page 2](./pages/another-page.html) | [Link to page 3](./pages/another-page.html). | [Link to page 4](./pages/another-page.html)
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+Here could be some general stuff about the project just to warm-up.
 
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
 ### Project plan
 
+Some text about the plan and idea and then the picture.
+
 ![This img is in assets/images folder](./assets/images/plan_image.jpg)
 
+## Correlation
+Here some stuff of correlation between the different weather parameters and energy consumption.
+
+#### "Static" correlations
+Static correlation showning roughly how different weather parameters affect to the energy consumption. When the correlation is negative (temperature for example) it means that when temperature goes down the electricity consumption goes up.
+
+![Dynamcis of correlations](./assets/images/weather_corr_energy_con.png)
+
+#### Rolling correlations
+
+Rolling correlations for of different weather attributes and energy consumption for the industrial customer (ic).
+
+![Dynamcis of correlations](./assets/images/timeseries_correlation.png)
+
 # Header 1
+
+Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 

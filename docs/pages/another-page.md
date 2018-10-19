@@ -4,7 +4,7 @@ layout: default
 
 ## Welcome to another page
 
-_yay_
+This is one of the sub pages
 
 
 [back](./..)
