@@ -30,6 +30,17 @@ def get_industrial_electricity_data():
     data = pd.io.parsers.read_csv('../data/energy_industrial.csv',
                                   index_col=0, parse_dates=True)
     return data['Demand/Usage']
+    
+
+def get_building_electricity_data():
+    """
+    Fetch building electricity consumption data.
+
+    Returns a series of hourly consumption data in kWh.
+    """
+    data = pd.io.parsers.read_csv('../data/energy_building.csv',
+                                  index_col=0, parse_dates=True)
+    return data['Demand/Usage']    
 
 
 def get_ic_weather():
