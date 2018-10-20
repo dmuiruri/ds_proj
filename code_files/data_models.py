@@ -5,7 +5,7 @@
 
 import pandas as pd
 import data_manager as dm
-
+import statsmodel as sm
 
 def ic_weather_correlations():
     """
@@ -34,6 +34,13 @@ def ic_weather_roll_corr(win=12):
                             'ic_U': ic_hum_corr, 'ic_Ff': ic_wind_corr,
                             'ic_dptemp': ic_dewtemp_corr})
     return corr_df.dropna()
+
+
+def regression_model(Y, X):
+    """Run a regression model."""
+    model = sm.OLS(Y, X)
+    results = model.fit()
+    return results
 
 
 if __name__ == '__main__':
