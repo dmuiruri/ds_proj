@@ -27,6 +27,11 @@ Rolling correlations for of different weather attributes and energy consumption 
 
 ![Dynamcis of correlations](./assets/images/timeseries_correlation.png)
 
+## Regression models
+* What weather elements affect the electricity consumption?
+* Can we predict energy consumption reliably and how far ahead?
+
+
 # Header 1
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.

@@ -10,3 +10,7 @@
 # Excel backup file
 ~$*.xlsx
 ~$*.xls
+
+# jekyll generated folders
+docs/_site
+docs/.sass-cache
