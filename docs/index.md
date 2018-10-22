@@ -6,11 +6,9 @@ layout: default
 
 Electricity is a major contributor towards the cost of running facilities either in a commercial setting or a household setup. In this project we model electricity demand for three different categories of real estate projects - An Industrial Consumer, a Commercial Building and a Commercial Real Estate (apartment block).
 
-The objective is to use available data to analyze, model and forecast electricity demand in these categories of electricity customers.
+The objective is to use currently available electricity demand/usage data and weather data to analyze, model and forecast electricity demand across the three categories of electricity customers.
 
-In an industrial commercial setting, electricity demand forecasting can have significant cost saving as
-
-Energy demand price volatility can induce significant cashflow challenges in
+Electricity prices are additionally observed to be volatile and therefore tend to induce significant cashflow and earnings management challenges in an industrial or commercial setting where electricity consumption is significant. Electricity demand forecasting can therefore provide significant cost saving benefits as projected demand can be used to purchase electricity from energy markets in forward looking markets thus providing cash flow flactuation and earnings management.
 
 
 ### Project plan
