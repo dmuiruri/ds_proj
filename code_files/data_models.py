@@ -5,7 +5,7 @@
 
 import pandas as pd
 import data_manager as dm
-import statsmodels as sm
+import statsmodels.api as sm
 
 def ic_weather_correlations():
     """
