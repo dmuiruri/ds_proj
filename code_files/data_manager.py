@@ -34,7 +34,7 @@ def get_industrial_electricity_data():
 
 def get_building_electricity_data():
     """
-    Fetch industrial electricity consumption data.
+    Fetch building electricity consumption data.
 
     Returns a series of hourly consumption data in kWh.
     """
@@ -45,7 +45,7 @@ def get_building_electricity_data():
 
 def get_cre_electricity_data():
     """
-    Fetch building electricity consumption data.
+    Fetch cre electricity consumption data.
 
     Returns a series of hourly consumption data in kWh.
     """
