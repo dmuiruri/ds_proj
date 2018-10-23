@@ -65,6 +65,16 @@ def get_ic_weather():
     return data
 
 
+def get_csv_data(path, parseDates=True, indexCol=None):
+    """
+    Get data using a generic path string.
+
+    Helper function to fetch arbitrary files in the repo.
+    """
+    return pd.io.parsers.read_csv(path,
+                                  parse_dates=parseDates, index_col=indexCol)
+
+
 if __name__ == '__main__':
     print('Weather data\n {} \n'.format(
             get_weather_data().head()))
@@ -76,3 +86,5 @@ if __name__ == '__main__':
             get_industrial_electricity_data().head()))
     print('Weather and Industrial electricity consumption\n{}\n'.format(
             get_ic_weather().head()))
+    print('Get generic data from the repository\n{}'.format(
+            get_csv_data('../data/energy_building.csv', indexCol=0).head()))
