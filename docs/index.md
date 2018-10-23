@@ -11,8 +11,38 @@ The objective is to use currently available electricity demand/usage data and we
 Electricity prices are additionally observed to be volatile and therefore tend to induce significant cashflow and earnings management challenges in an industrial or commercial setting where electricity consumption is significant. Electricity demand forecasting can therefore provide significant cost saving benefits as projected demand can be used to purchase electricity from energy markets in forward looking markets thus providing cash flow flactuation and earnings management.
 
 ### Data Description
-<Insert Data Description>
-  
+
+Three different kind of data is used, three different data sources so to speak. Energy price data which tells the daily price for electricity in the given location, electricity demand/usage data and weather data. The data spans a one year. The price data is per day. Electricity consumption data is hourly usage data and the weather data is also in hourly format.
+
+The data is resampled to daily, weekly, monthly form when needed.
+
+###### Consumption data
+
+Consumption data contains usage data for one year for three different premises, industrial building, commercial building and commercial real estate. Each of the locations have on meter so one number for the amount of electricity usage. The electricity consumption is in [Kilowatt hour](https://en.wikipedia.org/wiki/Kilowatt_hour).
+
+
+###### Weather data
+
+Weather data has five attributes/features temperature (T), pressure (P), humidity (U), wind speed (Ff) and dew point (Td).
+
+
+| attribute    | full name         | info
+|:-------------|:------------------|:------------------|
+| T            | Temperature       | [https://en.wikipedia.org/wiki/Temperature](https://en.wikipedia.org/wiki/Temperature) |
+| P            | Pressure          |[https://en.wikipedia.org/wiki/Pressure](https://en.wikipedia.org/wiki/Pressure) |
+| U            | Humidity           |[https://en.wikipedia.org/wiki/Humidity](https://en.wikipedia.org/wiki/Humidity) |
+| Ff           | Wind speed        |[https://en.wikipedia.org/wiki/Wind_speed](https://en.wikipedia.org/wiki/Wind_speed) |
+| Td           | Dew point         | [https://en.wikipedia.org/wiki/Dew_point](https://en.wikipedia.org/wiki/Dew_point)|
+
+
+###### Price data
+
+The price data is contains daily price for the electricity. Electricity cost is calculated based on it by multiplying daily usage with the cost.
+
+
+
+#### XXXXXXXXXXXX  End of the known world
+ 
 ### Project plan
 
 Some text about the plan and idea and then the picture.
