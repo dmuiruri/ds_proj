@@ -2,19 +2,21 @@
 layout: default
 ---
 
+[Introduction](./../index.html) | [Analysis](./../pages/analysis.html) | [Link to page 3](./pages/another-page.html). | [Link to page 4](./pages/another-page.html)
+
 ## Correlation
 Here some stuff of correlation between the different weather parameters and energy consumption.
 
 #### "Static" correlations
 Static correlation showning roughly how different weather parameters affect to the energy consumption. When the correlation is negative (temperature for example) it means that when temperature goes down the electricity consumption goes up.
 
-![Dynamcis of correlations](./assets/images/weather_corr_energy_con.png)
+![Dynamcis of correlations](./../assets/images/Electricity_and_weather_correlation.png)
 
 #### Rolling correlations
 
 Rolling correlations for of different weather attributes and energy consumption for the industrial customer (ic).
 
-![Dynamcis of correlations](./assets/images/timeseries_correlation.png)
+![Dynamcis of correlations](./../assets/images/timeseries_correlation.png)
 
 ## Regression models
 * What weather elements affect the electricity consumption?
