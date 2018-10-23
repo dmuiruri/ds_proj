@@ -45,4 +45,4 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 
 The price data contains daily price for the electricity. Electricity cost is calculated based on it by multiplying daily usage with the cost.
 
-
+![weekly electricity prices (may 2017 - may 2018)](./assets/images/weekly_electricity_prices.png)
