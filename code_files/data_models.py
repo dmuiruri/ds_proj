@@ -7,6 +7,7 @@ import pandas as pd
 import data_manager as dm
 import statsmodels.api as sm
 
+
 def ic_weather_correlations():
     """
     Calculate static correlations.
@@ -44,7 +45,12 @@ def regression_model(Y, X):
 
 
 if __name__ == '__main__':
+    """Add self tests."""
+
     print('Correlations between industrial Elec consumption and weather\n {}'.
           format(ic_weather_correlations()))
     print('Rolling correlations between elec consumption and weather\n {}'.
           format(ic_weather_roll_corr().head()))
+    print('Run a regression model\n{}'.
+          format(regression_model(dm.get_ic_weather()['Demand/Usage'],
+                 dm.get_ic_weather()[['T', 'P', 'U', 'Ff', 'Td']]).summary()))
