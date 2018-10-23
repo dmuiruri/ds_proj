@@ -54,7 +54,7 @@ def get_cre_electricity_data():
     return data['Demand/Usage']
 
 
-def get_all_hourly_data():
+def get_all_elec_hourly_data():
     """
     Get hourly data.
 
@@ -88,7 +88,19 @@ def get_csv_data(path, parseDates=True, indexCol=None):
                                   parse_dates=parseDates, index_col=indexCol)
 
 
+def get_price_data_hourly():
+    """
+    Get electricity price data.
+
+    Data is based on exchange prices
+    """
+    data = pd.io.parsers.read_csv('../data/price_data_italy_fixed.csv')
+    data.set_index('DateTime', inplace=True)
+    return data['PUN']
+
+
 if __name__ == '__main__':
+    """Test"""
     print('Weather data\n {} \n'.format(
             get_weather_data().head()))
     print('Industrial Electricity Consumtion Data\n{}\n'.format(
@@ -99,7 +111,8 @@ if __name__ == '__main__':
             get_cre_electricity_data().head()))
     print('Weather and Industrial electricity consumption\n{}\n'.format(
             get_ic_weather().head()))
-    print('Get generic data from the repository\n{}'.format(
+    print('Get generic data from the repository\n{}\n'.format(
             get_csv_data('../data/energy_building.csv', indexCol=0).head()))
-    print('Get all consumption data in hourly format\n{}'.
-          format(get_all_hourly_data().head()))
+    print('Get all consumption data in hourly format\n{}\n'.
+          format(get_all_elec_hourly_data().head()))
+    print('Get Price data\n{}\n'.format(get_price_data_hourly().head()))
