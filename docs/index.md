@@ -10,9 +10,11 @@ The objective is to use currently available electricity demand/usage data and we
 
 Electricity prices are additionally observed to be volatile and therefore tend to induce significant cashflow and earnings management challenges in an industrial or commercial setting where electricity consumption is significant. Electricity demand forecasting can therefore provide significant cost saving benefits as projected demand can be used to purchase electricity from energy markets in forward looking markets thus providing cash flow flactuation and earnings management.
 
+Electricity is arguably considered a commodity due to the funngible characteristic in addition to the fact that it is not stored once it is produced. These characteristics imply that electrcity trading markets remove significant market inneficiencies that arise as a result of over production and undersupply of electricity.
+
 ### Data Description
 
-Three different kind of data is used, three different data sources so to speak. Energy price data which tells the daily price for electricity in the given location, electricity demand/usage data and weather data. The data spans a one year. The price data is per day. Electricity consumption data is hourly usage data and the weather data is also in hourly format.
+In this study we make use of three general kinds of datasets -electricity demand/usage data, weather data and energy price data which tells the daily price for electricity at the selected location. The data spans one year (18/05/2017 - 18/05/2018)  and recorded on hourly observations leading to about 8760 observations. 
 
 The data is resampled to daily, weekly, monthly form when needed.
 
@@ -21,6 +23,8 @@ The data is resampled to daily, weekly, monthly form when needed.
 Consumption data contains usage data for one year for three different premises, industrial building, commercial building and commercial real estate. Each of the locations have one meter so one number for the amount of electricity usage. The electricity consumption is in [Kilowatt hour](https://en.wikipedia.org/wiki/Kilowatt_hour).
 
 ![weekly electricity consumption (may 2017 - may 2018)](./assets/images/weekly_el_consumption_all_customers.png)
+
+Monthly overview of the electricity consumption data set.
 
 
 
