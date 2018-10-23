@@ -54,6 +54,19 @@ def get_cre_electricity_data():
     return data['Demand/Usage']
 
 
+def get_all_hourly_data():
+    """
+    Get hourly data.
+
+    Get all data in hourly format
+    """
+    industry = get_industrial_electricity_data()
+    building = get_building_electricity_data()
+    cre = get_cre_electricity_data()
+    return pd.DataFrame({'industry': industry, 'building': building,
+                        'cre': cre})
+
+
 def get_ic_weather():
     """
     Get industrial electricity consumption and weather dataself.
@@ -83,8 +96,10 @@ if __name__ == '__main__':
     print('Building Electricity Consumtion Data\n{}\n'.format(
             get_building_electricity_data().head()))
     print('CRE Electricity Consumtion Data\n{}\n'.format(
-            get_industrial_electricity_data().head()))
+            get_cre_electricity_data().head()))
     print('Weather and Industrial electricity consumption\n{}\n'.format(
             get_ic_weather().head()))
     print('Get generic data from the repository\n{}'.format(
             get_csv_data('../data/energy_building.csv', indexCol=0).head()))
+    print('Get all consumption data in hourly format\n{}'.
+          format(get_all_hourly_data().head()))
