@@ -20,7 +20,7 @@ The data is resampled to daily, weekly, monthly form when needed.
 
 Consumption data contains usage data for one year for three different premises, industrial building, commercial building and commercial real estate. Each of the locations have one meter so one number for the amount of electricity usage. The electricity consumption is in [Kilowatt hour](https://en.wikipedia.org/wiki/Kilowatt_hour).
 
-![weekly electricity consumption (may 2017 - may 2018)](./../assets/images/weekly_el_consumption_all_customers.png)
+![weekly electricity consumption (may 2017 - may 2018)](./assets/images/weekly_el_consumption_all_customers.png)
 
 
 
@@ -38,7 +38,7 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 | Td           | Dew point         | [https://en.wikipedia.org/wiki/Dew_point](https://en.wikipedia.org/wiki/Dew_point)|
 
 
-![weekly temperatures (may 2017 - may 2018)](./../assets/images/weekly_temp_and_dew_point_temp.png)
+![weekly temperatures (may 2017 - may 2018)](./assets/images/weekly_temp_and_dew_point_temp.png)
 
 
 ###### Price data
