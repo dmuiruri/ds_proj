@@ -16,4 +16,4 @@ docs/_site
 docs/.sass-cache
 
 # ignore dev version for now
-plots.py
+plots_.py
