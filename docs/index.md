@@ -35,6 +35,9 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 | Td           | Dew point         | [https://en.wikipedia.org/wiki/Dew_point](https://en.wikipedia.org/wiki/Dew_point)|
 
 
+![weekly temperatures (may 2017 - may 2018)](./../assets/images/weekly_temp_and_dew_point_temp.png)
+
+
 ###### Price data
 
 The price data contains daily price for the electricity. Electricity cost is calculated based on it by multiplying daily usage with the cost.
