@@ -16,17 +16,7 @@ Electricity is arguably considered a commodity due to the funngible characterist
 
 In this study we make use of three general kinds of datasets -electricity demand/usage data, weather data and energy price data which tells the daily price for electricity at the selected location. The data spans one year (18/05/2017 - 18/05/2018)  and recorded on hourly observations leading to about 8760 observations. 
 
-The data is resampled to daily, weekly, monthly form when needed.
-var	mean	min	max	std	skewness	kurtosis
-Price 	54,0	7,0	170,0	15,5	1,7	5,6
-Temp (T)	16,5	-6,0	39,5	7,8	0,2	-0,5
-Pressure (P)	760,9	742,4	776,6	5,2	-0,3	0,8
-Humidity (U)	65,8	13,5	100,0	18,6	-0,4	-0,7
-Windspeed (Ff)	3,0	0,5	13,0	1,6	1,5	3,2
-Dewpoint Temp (Td)	9,2	-11,5	23,5	5,5	-0,5	0,4
-industry elec usage (ic)	1417,5	0,0	3777,8	1219,9	0,4	-1,5
-building elec usage (bc)	464,4	232,5	787,2	163,1	0,5	-1,2
-residential elec usage (rc)	358,6	14,1	1421,7	276,0	1,2	0,8
+The table below shows some descriptive statistics on key variables taken from the hourly.
 
 | Variable     | mean         | min      | max  | std  | skewness | kurtosis |
 |:-------------|:-------------|:---------|:-----|:-----|:---------|:---------|
@@ -38,6 +28,7 @@ residential elec usage (rc)	358,6	14,1	1421,7	276,0	1,2	0,8
 | industry elec usage (ic)   | 1417,5	 |0,0   |	3777,8	| 1219,9	|  0,4	| -1,5 |
 | building elec usage (bc)	 | 464,4	 |232,5 |	787,2	  | 163,1   |  0,5	| -1,2 |
 | residential elec usage (rc)| 358,6	 |14,1	|1421,7	  |276,0	  |  1,2	| 0,8  |
+
 
 ###### Consumption data
 
