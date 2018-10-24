@@ -56,11 +56,12 @@ def get_hourly_descriptive_stats():
     elec_cons = dm.get_all_elec_hourly_data()
     elec_price = pd.DataFrame(dm.get_price_data_hourly())
     data = elec_price.join(weather).join(elec_cons)  # amalgamated dataset
-    data = data.sort_index().dropna()  # .describe()
-    stats = [(item, np.mean(data[item]), np.std(data[item]), skew(data[item]),
+    data = data.sort_index().dropna()
+    stats = [(item, np.mean(data[item]), np.min(data[item]),
+             np.max(data[item]), np.std(data[item]), skew(data[item]),
              kurtosis(data[item])) for item in data.columns]
-    stats_df = pd.DataFrame(stats, columns=['param', 'mean', 'std',
-                            'skewdness', 'kurtosis'])
+    stats_df = pd.DataFrame(stats, columns=['var', 'mean', 'min', 'max', 'std',
+                            'skewness', 'kurtosis'])
     return stats_df
 
 
