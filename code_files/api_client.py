@@ -1,25 +1,26 @@
 
 import requests # http://docs.python-requests.org/en/master/
 import json     # https://docs.python.org/3/library/json.html
-import data_manager as dm
-import pandas as pd
+
 
 
 PREDICT_API_URL = 'http://127.0.0.1:5000/predict'
-REQUEST_HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+HELLO_API_URL   = 'http://127.0.0.1:5000/hello'
+
+CONSUMPTION_FILE = '../data/energy_industrial.csv'
+WEATHER_FILE = '../data/hourly_resampled_weather_data.csv'
 
 
-# TODO: construct a payload for the prediction POST request
-#consumption_json = pd.DataFrame(dm.get_industrial_electricity_data()).to_json()
-#weather_json = dm.get_weather_data().to_json()
-#data = {'consumption': consumption_json, 'weather': weather_json, 'message': 'Dadaa'}
+# construct a payload for the prediction POST request
+# POST contains two files: consumption data and weather data
+#forecast_base_data = [('files', open(CONSUMPTION_FILE, 'rb')), ('files', open(WEATHER_FILE, 'rb'))]
 
-# make the POST
-#response = requests.post(PREDICT_API_URL, data=json.dumps(data), headers=REQUEST_HEADERS)
+# make the POST 
+# TODO: this fails... payload too big?
+#response = requests.post(PREDICT_API_URL, files=forecast_base_data)
 
-# test with GET request
-response = requests.get(PREDICT_API_URL)
+# GET request for a sanity check
+response = requests.get(HELLO_API_URL)
 
-# json response
+# server response
 print('Response from server:', response.text)
-

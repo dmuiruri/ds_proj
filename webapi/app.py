@@ -2,13 +2,14 @@ from flask import Flask # http://flask.pocoo.org/docs/1.0/quickstart/#quickstart
 from flask import request
 from flask import jsonify
 
-from flask_restful import Resource, Api # https://flask-restful.readthedocs.io/en/latest/
+from flask_restful import Resource, Api, reqparse # https://flask-restful.readthedocs.io/en/latest/
 from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
 
 
 app = Flask(__name__)
 api = Api(app)
+parser = reqparse.RequestParser()
 
 # Swagger  setup and configuration
 SWAGGER_URL = '/api/specs'
@@ -35,13 +36,23 @@ class HelloWorld(Resource):
           200:
             description: Message returned
         '''
-        return {'message': 'Hello space'}
+        return {'message': 'Hello space!'}
 
 
 class PredictionModel(Resource):
-    def get(self):
-        # swagger_from_file: /prediction.yml
-        # 
+    # def get(self):
+    #     # swagger_from_file: /prediction.yml
+    #     # 
+    #     '''
+    #     Just ping
+    #     ---
+    #     responses:
+    #       200:
+    #         description: Ok message
+    #     '''
+    #     return {'message': "I'm alive!"} 
+
+    def post(self):       
         '''
         Get a prediction/forecast of energy consumption based on consumption data and weather data
         ---
@@ -49,13 +60,17 @@ class PredictionModel(Resource):
           - in: body
         responses:
           200:
-            description: Prediction calculated
+            description: Prediction result(s)
+          400:
+            description: Request was broken (propably the request payload)
         '''
-        return {'message': 'This will be a prediction.'}        
+        args = parser.parse_args()
+        print(len(args))
+        return {'message': 'Here will be a electricity consumption forecast. ' + str(len(args))}         
 
 
 # activate paths
-api.add_resource(HelloWorld, '/')
+api.add_resource(HelloWorld, '/hello')
 api.add_resource(PredictionModel, '/predict')
 
 
