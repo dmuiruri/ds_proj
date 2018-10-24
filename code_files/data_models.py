@@ -5,7 +5,9 @@
 
 import pandas as pd
 import data_manager as dm
+import numpy as np
 import statsmodels.api as sm
+from scipy.stats import skew, kurtosis
 
 
 def ic_weather_correlations():
@@ -44,6 +46,24 @@ def regression_model(Y, X):
     return results
 
 
+def get_hourly_descriptive_stats():
+    """
+    Get descriptive statistics.
+
+    Generates the descriptive statistics based on hourly data
+    """
+    weather = dm.get_weather_data()
+    elec_cons = dm.get_all_elec_hourly_data()
+    elec_price = pd.DataFrame(dm.get_price_data_hourly())
+    data = elec_price.join(weather).join(elec_cons)  # amalgamated dataset
+    data = data.sort_index().dropna()  # .describe()
+    stats = [(item, np.mean(data[item]), np.std(data[item]), skew(data[item]),
+             kurtosis(data[item])) for item in data.columns]
+    stats_df = pd.DataFrame(stats, columns=['param', 'mean', 'std',
+                            'skewdness', 'kurtosis'])
+    return stats_df
+
+
 if __name__ == '__main__':
     """Add self tests."""
 
@@ -54,3 +74,4 @@ if __name__ == '__main__':
     print('Run a regression model\n{}'.
           format(regression_model(dm.get_ic_weather()['Demand/Usage'],
                  dm.get_ic_weather()[['T', 'P', 'U', 'Ff', 'Td']]).summary()))
+    print('Statistics\n{}\n'.format(get_hourly_descriptive_stats()))
