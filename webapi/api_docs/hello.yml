@@ -1,0 +1,5 @@
+Get a hello message
+---
+responses:
+  200:
+    description: Message returned
