@@ -40,17 +40,17 @@ class HelloWorld(Resource):
 
 
 class PredictionModel(Resource):
-    # def get(self):
-    #     # swagger_from_file: /prediction.yml
-    #     # 
-    #     '''
-    #     Just ping
-    #     ---
-    #     responses:
-    #       200:
-    #         description: Ok message
-    #     '''
-    #     return {'message': "I'm alive!"} 
+    def get(self):
+        # swagger_from_file: /prediction.yml
+        # 
+        '''
+        Just ping
+        ---
+        responses:
+          200:
+            description: Ok message
+        '''
+        return {'message': "I'm alive!"} 
 
     def post(self):       
         '''
@@ -64,9 +64,11 @@ class PredictionModel(Resource):
           400:
             description: Request was broken (propably the request payload)
         '''
-        args = parser.parse_args()
-        print(len(args))
-        return {'message': 'Here will be a electricity consumption forecast. ' + str(len(args))}         
+        # https://stackoverflow.com/questions/11817182/uploading-multiple-files-with-flask
+        uploaded_files = request.files.getlist("files")
+        print(uploaded_files)
+
+        return {'message': 'Here will be a electricity consumption forecast. '}         
 
 
 # activate paths
