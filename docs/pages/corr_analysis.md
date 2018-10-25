@@ -14,17 +14,14 @@ Correlation map below indicates how different weather parameters are correlated 
 
 The energy consumer segments have positive correlations although low while temperature has a positive correlation with enery consumption in a commercial building and an apartment block while the correlation is negative for an industrial consumer.
 
-#####
-Industrial energy consumption and weather parameters
+##### Industrial energy consumption and weather parameters
 
 ![Correlations](./../assets/images/ic_weather_correlations.png)
 
-#####
-Commercial building energy consumption and weather parameters
+##### Commercial building energy consumption and weather parameters
 ![Correlations](./../assets/images/building_weather_correlations.png)
 
-#####
-Residential block energy consumption and weather parameters
+##### Residential block energy consumption and weather parameters
 ![Correlations](./../assets/images/cre_weather_correlations.png)
 
 
