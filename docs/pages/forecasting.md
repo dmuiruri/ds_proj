@@ -3,11 +3,20 @@ layout: default
 ---
 
 [Introduction](./../index.html) | [Correlation Analysis](./../pages/corr_analysis.html) | [Forecasting](./../pages/forecasting.html) | [Link to page 4](./pages/another-page.html)
+In this section model the relationship between energy consumption and weather parameters where we hypothesise that weather has an impact on energy consumption in this particular location. Additionally, if weather does indeed affect energy consumption can a model be created to predit the same?
 
 ## Regression models
-* What weather elements affect the electricity consumption?
-* Can we predict energy consumption reliably and how far ahead?
+To setup the regression model, we first check the correlations between the regressors, as high correlation between them would lead to unstable parameters.
 
+| -  |   T  |   P   |   U  |   Ff |   Td |
+|:---|:-----|:------|:-----|------|:-----|
+| T	 | 1,0	|     	|      |      |	     |
+| P	 | 0,1	|  1,0	|      |     	|      |
+| U	 | -0,7	| -0,2	| 1,0	 |    	|      |
+| Ff | 0,1	| -0,3	| -0,2 |	1,0	|      |
+| Td | 0,7	|  0,0	| 0,0	 | -0,1	|  1,0 |
+
+Following the correlations listed in the table above it is evident that Temperature(T) has a high correlation with the Dew point temparature(Td) and humidity, Td however has a low correlation to U. It is therefore imperative that one the two measures of temperature be ommitted from the model.
 
 # Header 1
 
