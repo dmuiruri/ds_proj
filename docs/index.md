@@ -53,6 +53,6 @@ The price data contains hourly price for the electricity as recorded in the elec
 |:---------------------|:-----|:-----|:-------|:------|:---------|:---------|
 |      -               | 54,0 | 7,0  | 170,0  | 15,5  |  1,7     |5,6       |
 
-The graph below shows the average hourly price (€/MWh) in the sample period indicating increasing energy prices during Winter periods.
+The graph below shows the average hourly price (€/MWh) in the sample period indicating increasing energy prices during Winter periods. The hourly price histogram also indicates that the prices are positively skewed and hence the depict the risk that a consumer would be mitigating by managing the volatility in electricity prices.
 
 ![Average monthly electricity prices (may 2017 - may 2018) and the hourly price distribution](./assets/images/monthly_elec_price_hist.png)
