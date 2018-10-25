@@ -21,7 +21,7 @@ In this study we make use of three general kinds of datasets -electricity demand
 
 Consumption data contains usage data for one year for three different premises, industrial building, commercial building and commercial real estate. Each of the locations have one meter so one number for the amount of electricity usage. The electricity consumption is in [Kilowatt hour](https://en.wikipedia.org/wiki/Kilowatt_hour).
 
-| Elec Consumption Variables| mean   | min   | max    | std   | skewness | kurtosis |
+| Elec Consumption Variables (KWh)| mean   | min   | max    | std   | skewness | kurtosis |
 |:------------------------|:-------|:------|:-------|:------|:---------|:---------|
 | Industry consumer (ic)  | 1417,5 | 0,0   | 3777,8 | 1219,9|  0,4	   | -1,5     |
 | Commercial building (bc)| 464,4	 | 232,5 | 787,2	| 163,1 |  0,5	   | -1,2     |
@@ -50,5 +50,8 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 ###### Price data
 
 The price data contains daily price for the electricity. Electricity cost is calculated based on it by multiplying daily usage with the cost.
+| Price (€/Mwh) | mean | min  | max    | std   | skewness | kurtosis |
+|:--------------|:-----|:-----|:-------|:------|:---------|:---------|
+|               | 54,0 | 7,0  | 170,0  | 15,5  |  1,7     |5,6       |
 
 ![weekly electricity prices (may 2017 - may 2018)](./assets/images/weekly_electricity_prices.png)
