@@ -35,7 +35,7 @@ Monthly overview of the electricity consumption data set.
 
 Weather data has five attributes/features temperature (T), pressure (P), humidity (U), wind speed (Ff) and dew point (Td). Notable from the weather statistics, the temperature is positively skewed while the dewpoint is neagtively skewed. Our model is limited for these variables but more variables could added for further testing.
 
-| Weather Variables       | mean   | min   | max    | std   | skewness | kurtosis | info              |
+| Weather Variables (Hourly)| mean   | min   | max    | std   | skewness | kurtosis | info              |
 |:------------------------|:-------|:------|:-------|:------|:---------|:---------|:------------------|
 | Temp (T)                | 16,5	 | -6,0	 | 39,5	  | 7,8   |	0,2      | -0,5     |[T](https://en.wikipedia.org/wiki/Temperature) |
 | Pressure (P)            | 760,9	 | 742,4 | 776,6  | 5,2	  | -0,3	   |  0,8     |[P](https://en.wikipedia.org/wiki/Pressure) |
