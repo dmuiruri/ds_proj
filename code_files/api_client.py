@@ -7,8 +7,10 @@ import requests # http://docs.python-requests.org/en/master/
 '''
 
 
-PREDICT_API_URL = 'http://127.0.0.1:5000/predict'
-HELLO_API_URL   = 'http://127.0.0.1:5000/hello'
+PREDICT_API_URL    = 'http://127.0.0.1:5000/predict'
+HELLO_API_URL      = 'http://127.0.0.1:5000/hello'
+HELLO_HEROKU_URL   = 'https://ds-2018-webapi.herokuapp.com/hello'
+PREDICT_HEROKU_URL = 'https://ds-2018-webapi.herokuapp.com/predict'
 
 CONSUMPTION_FILE = '../data/energy_industrial.csv'
 WEATHER_FILE = '../data/hourly_resampled_weather_data.csv'
@@ -19,10 +21,12 @@ WEATHER_FILE = '../data/hourly_resampled_weather_data.csv'
 forecast_base_data = [('files', open(CONSUMPTION_FILE, 'rb')), ('files', open(WEATHER_FILE, 'rb'))]
 
 # make the POST 
-response = requests.post(PREDICT_API_URL, files=forecast_base_data)
+#response = requests.post(PREDICT_API_URL, files=forecast_base_data)
+response = requests.post(PREDICT_HEROKU_URL, files=forecast_base_data)
 
 # GET requests for a sanity check
 #response = requests.get(HELLO_API_URL)
+#response = requests.get(HELLO_HEROKU_URL)
 #response = requests.get(PREDICT_API_URL)
 
 # server response
