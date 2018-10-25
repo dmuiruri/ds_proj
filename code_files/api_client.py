@@ -1,33 +1,40 @@
 import requests # http://docs.python-requests.org/en/master/
 
-'''
-
-(Test) client script for electricity consumption forecast API
+import data_manager as dm
 
 '''
+(Test) client script for the electricity consumption forecast API
+
+'''
 
 
-PREDICT_API_URL    = 'http://127.0.0.1:5000/predict'
-HELLO_API_URL      = 'http://127.0.0.1:5000/hello'
-HELLO_HEROKU_URL   = 'https://ds-2018-webapi.herokuapp.com/hello'
-PREDICT_HEROKU_URL = 'https://ds-2018-webapi.herokuapp.com/predict'
-
-CONSUMPTION_FILE = '../data/energy_industrial.csv'
-WEATHER_FILE = '../data/hourly_resampled_weather_data.csv'
+PREDICT_API_URL_LOCAL  = 'http://127.0.0.1:5000/predict'
+HELLO_API_URL_LOCAL    = 'http://127.0.0.1:5000/hello'
+HELLO_API_URL_HEROKU   = 'https://ds-2018-webapi.herokuapp.com/hello'
+PREDICT_API_URL_HEROKU = 'https://ds-2018-webapi.herokuapp.com/predict'
 
 
-# # construct a payload for the prediction POST request
-# # POST contains two files: consumption data and weather data
-forecast_base_data = [('files', open(CONSUMPTION_FILE, 'rb')), ('files', open(WEATHER_FILE, 'rb'))]
+# Construct the payload for the prediction POST request, payload contains 
+# consumption and weather data.
+# Ask the data from data_manager and convert to csv for the POST request.
+# Can't put the dataframes directly to the request, but the CSV format works.
+weather_df = dm.get_ic_weather()
+consumption_df = dm.get_industrial_electricity_data()
+forecast_base_data = [('files', consumption_df.to_csv()), ('files', weather_df.to_csv())]
 
-# make the POST 
-#response = requests.post(PREDICT_API_URL, files=forecast_base_data)
-response = requests.post(PREDICT_HEROKU_URL, files=forecast_base_data)
 
-# GET requests for a sanity check
-#response = requests.get(HELLO_API_URL)
-#response = requests.get(HELLO_HEROKU_URL)
-#response = requests.get(PREDICT_API_URL)
+# Do the POST to the server
+#response = requests.post(PREDICT_API_URL_LOCAL, files=forecast_base_data)
+response = requests.post(PREDICT_API_URL_HEROKU, files=forecast_base_data)
 
-# server response
+# Some GET requests for a sanity check
+#response = requests.get(HELLO_API_URL_LOCAL)
+#response = requests.get(HELLO_API_URL_HEROKU)
+#response = requests.get(PREDICT_API_URL_LOCAL) # this url has also a GET handler
+#response = requests.get(PREDICT_API_URL_HEROKU) # this url has also a GET handler
+
+# Print the server response. 
+# The response would contain the electricity consumption forecast, maybe in JSON format.
+# JSON could be easily consumed by different kinds of client applications, whether it 
+# would be a mobile app, a single page (SPA) browser app, a text based terminal app etc.  
 print('Response from server:', response.text)
