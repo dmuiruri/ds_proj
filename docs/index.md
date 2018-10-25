@@ -17,7 +17,7 @@ Electricity is arguably considered a commodity due to the funngible characterist
 In this study we make use of three general kinds of datasets -electricity demand/usage data, weather data and energy price data which tells the daily price for electricity at the selected location. The data spans one year (18/05/2017 - 18/05/2018)  and recorded on hourly observations leading to about 8760 observations. The general working hypothesis is that weather affects the amount of energy consumed in various settings, the extent to which weather may impact consumption may however differ.
 
 
-###### Consumption data
+#### Consumption data
 
 Consumption data contains usage data for one year for three different premises, industrial building, commercial building and commercial real estate. Each of the locations have one meter so one number for the amount of electricity usage. The electricity consumption is in [Kilowatt hour](https://en.wikipedia.org/wiki/Kilowatt_hour).
 
@@ -31,7 +31,7 @@ Consumption data contains usage data for one year for three different premises, 
 
 Monthly overview of the electricity consumption data set.
 
-###### Weather data
+#### Weather data
 
 Weather data has five attributes/features temperature (T), pressure (P), humidity (U), wind speed (Ff) and dew point (Td). Notable from the weather statistics, the temperature is positively skewed while the dewpoint is neagtively skewed. Our model is limited for these variables but more variables could added for further testing.
 
@@ -45,7 +45,7 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 
 ![weekly temperatures (may 2017 - may 2018)](./assets/images/weekly_temp_and_dew_point_temp.png)
 
-###### Price data
+#### Price data
 
 The price data contains hourly price for the electricity as recorded in the electricity exchange. This data is used to estimate the associated electricity cost (multiplying daily usage with the price) across the consumers.
 
