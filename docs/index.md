@@ -49,10 +49,12 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 
 ###### Price data
 
-The price data contains daily price for the electricity. Electricity cost is calculated based on it by multiplying daily usage with the cost.
+The price data contains hourly price for the electricity as recorded in the electricity exchange. This data is used to estimate the associated electricity cost (multiplying daily usage with the price) across the consumers.
 
-| Price (€/Mwh) | mean | min  | max    | std   | skewness | kurtosis |
-|:--------------|:-----|:-----|:-------|:------|:---------|:---------|
-|      -        | 54,0 | 7,0  | 170,0  | 15,5  |  1,7     |5,6       |
+| Hourly Price (€/Mwh) | mean | min  | max    | std   | skewness | kurtosis |
+|:---------------------|:-----|:-----|:-------|:------|:---------|:---------|
+|      -               | 54,0 | 7,0  | 170,0  | 15,5  |  1,7     |5,6       |
 
-![Average monthly electricity prices (may 2017 - may 2018)](./assets/images/monthly_elec_price.png)
+The graph below shows the average hourly price (€/MWh) in the sample period indicating increasing energy prices during Winter periods.
+
+![Average monthly electricity prices (may 2017 - may 2018)](./assets/images/monthly_elec_price_.png)
