@@ -2,19 +2,22 @@
 layout: default
 ---
 
-[Introduction](./../index.html) | [Analysis](./../pages/analysis.html) | [Link to page 3](./pages/another-page.html). | [Link to page 4](./pages/another-page.html)
+[Introduction](./../index.html) | [Correlation Analysis](./../pages/analysis.html) | [Forecasting](./pages/another-page.html). | [Link to page 4](./pages/another-page.html)
 
-## Correlation
-Here some stuff of correlation between the different weather parameters and energy consumption.
+## Correlation Analysis
+In this section we model the correlations in the data primarily investigating the relationship between various weather parameters with energy consumption of different sample consumer segments.
 
-#### "Static" correlations
-Static correlation showning roughly how different weather parameters affect to the energy consumption. When the correlation is negative (temperature for example) it means that when temperature goes down the electricity consumption goes up.
+### "Static" correlations
+Correlation map below indicates how different weather parameters are correlated to energy consumption across the three customer segments including how the weather parameters correlate. When the correlation is negative (temperature for example) it means that when temperature goes down the electricity consumption goes up.
 
-![Dynamcis of correlations](./../assets/images/Electricity_and_weather_correlation.png)
+![Correlations](./../assets/images/correlations_heatmap.png)
+
+The energy consumer segments have positive correlations although low while temperature has a positive correlation with enery consumption in a commercial building and an apartment block while the correlation is negative for an industrial consumer.
+
 
 #### Rolling correlations
 
-Rolling correlations for of different weather attributes and energy consumption for the industrial customer (ic).
+Rolling correlations for of different weather attributes and energy consumption for the industrial customer (ic) indicating that the correlations are not stable through out the sample period
 
 ![Dynamcis of correlations](./../assets/images/timeseries_correlation.png)
 
