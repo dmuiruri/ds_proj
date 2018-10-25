@@ -43,7 +43,7 @@ Weather data has five attributes/features temperature (T), pressure (P), humidit
 | Wind Speed (Ff)         | 3,0	   | 0,5   | 13,0	  | 1,6	  | 1,5      |	3,2     |[Ff](https://en.wikipedia.org/wiki/Wind_speed) |
 | Dewpoint Temp (Td)      | 9,2	   | -11,5 | 23,5	  | 5,5	  | -0,5	   |  0,4     |[Td](https://en.wikipedia.org/wiki/Dew_point)|
 
-![weekly temperatures (may 2017 - may 2018)](./assets/images/weekly_temp_and_dew_point_temp.png)
+![Monthly average weather based on hourly observations (may 2017 - may 2018)](./assets/images/monthly_weather.png)
 
 #### Price data
 
