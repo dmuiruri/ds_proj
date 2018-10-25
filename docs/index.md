@@ -57,4 +57,4 @@ The price data contains hourly price for the electricity as recorded in the elec
 
 The graph below shows the average hourly price (€/MWh) in the sample period indicating increasing energy prices during Winter periods.
 
-![Average monthly electricity prices (may 2017 - may 2018) and the hourly price distribution](./assets/images/monthly_elec_price.png)
+![Average monthly electricity prices (may 2017 - may 2018) and the hourly price distribution](./assets/images/monthly_elec_price_hist.png)
