@@ -23,17 +23,17 @@ Following the correlations listed in the table above it is evident that Temperat
 
 |             -                        |                  -                    |
 |:-------------------------------------|:--------------------------------------|
-| Dep. Variable              industry  | R-squared                        0.576|
-| Model                           OLS  | Adj. R-squared                   0.576|
-| Method                Least Squares  | F-statistic                      2963.|
-| Date               Fri, 26 Oct 2018  | Prob (F-sta tistic)               0.00|
-| Time                       00:44:29  | Log-Likelihoodc                -74298.|
-| No. Observation                8717  | AIC                          1.486e+05|
-| Df Residuals                   8713  | BIC                          1.486e+05|
-| Df Model                         4   |                                       |
-|Covariance Type            nonrobust  |                                       |
+| Dep. Variable \:           industry  | R-squared                        0.576|
+| Model\:                         OLS  | Adj. R-squared                   0.576|
+| Method\:              Least Squares  | F-statistic                      2963.|
+| Date\:             Fri, 26 Oct 2018  | Prob (F-sta tistic)               0.00|
+| Time\:                     00:44:29  | Log-Likelihoodc                -74298.|
+| No. Observation\:              8717  | AIC                          1.486e+05|
+| Df Residuals\:                 8713  | BIC                          1.486e+05|
+| Df Model\:                       4   |                                       |
+|Covariance Type\:          nonrobust  |                                       |
 
-|    coef            |   std err    |    t     | P>|t|   | [0.025      0.975]| |
+|    coef            |   std err    |    t     | P\>\|t\|| \[0.025    0.975\]| |
 |:-------------------|:-------------|:---------|:--------|:--------------------|
 |P            1.6605 |    0.081     | 20.377   |  0.000  |  1.501       1.820  |
 |U            3.1617 |    0.708     | 4.464    |  0.000  |  1.773       4.550  |
