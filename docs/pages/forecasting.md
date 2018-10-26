@@ -21,28 +21,27 @@ Following the correlations listed in the table above it is evident that Temperat
 
 |                          OLS Regression Results                               |
 |:-----------------------------------------------------------------------------:|
-| Dep. Variable:               industry   R-squared:                       0.576|
-| Model:                            OLS   Adj. R-squared:                  0.576|
-| Method:                 Least Squares   F-statistic:                     2963.|
-| Date:                Fri, 26 Oct 2018   Prob (F-statistic):               0.00|
-| Time:                        00:44:29   Log-Likelihood:                -74298.|
-| No. Observations:                8717   AIC:                         1.486e+05|
-| Df Residuals:                    8713   BIC:                         1.486e+05|
-| Df Model:                           4                                         |
-|Covariance Type:            nonrobust                                          |
-|===============================================================================|
-|              coef  |   std err     |    t     | P>|t|    | [0.025      0.975]||
+| Dep. Variable:              industry  | R-squared:                       0.576|
+| Model:                           OLS  | Adj. R-squared:                  0.576|
+| Method:                Least Squares  | F-statistic:                     2963.|
+| Date:               Fri, 26 Oct 2018  | Prob (F-statistic):               0.00|
+| Time:                       00:44:29  | Log-Likelihood:                -74298.|
+| No. Observations:               8717  | AIC:                         1.486e+05|
+| Df Residuals:                   8713  | BIC:                         1.486e+05|
+| Df Model:                         4   |                                       |
+|Covariance Type:            nonrobust  |                                       |
+|              coef  |   std err    |    t     | P>|t|    | [0.025      0.975]| |
 |:-----------------------------------------------------------------------------:|
-|P              1.6605      0.081     20.377      0.000       1.501       1.820 |
-|U              3.1617      0.708      4.464      0.000       1.773       4.550 |
-|Ff            13.4256      8.082      1.661      0.097      -2.417      29.268 |
-|Td           -10.3302      2.385     -4.331      0.000     -15.006      -5.655 |
+|P            1.6605 |    0.081     | 20.377   |  0.000   |  1.501       1.820  |
+|U            3.1617 |    0.708     | 4.464    |  0.000   |  1.773       4.550  |
+|Ff          13.4256 |    8.082     | 1.661    |  0.097   | -2.417      29.268  |
+|Td         -10.3302 |    2.385     | -4.331   |  0.000   | -15.006      -5.655 |
 |===============================================================================|
-|Omnibus:                      199.800   Durbin-Watson:                   0.225 |
-|Prob(Omnibus):                  0.000   Jarque-Bera (JB):              981.370 |
-|Skew:                           0.383   Prob(JB):                    7.91e-214 |
-|Kurtosis:                       1.546   Cond. No.                         473. |
-|===============================================================================|
+|Omnibus:                      199.800 |  Durbin-Watson:                  0.225 |
+|Prob(Omnibus):                  0.000 |  Jarque-Bera (JB):             981.370 |
+|Skew:                           0.383 |  Prob(JB):                   7.91e-214 |
+|Kurtosis:                       1.546 |  Cond. No.                        473. |
+
 
 
 # Header 1
