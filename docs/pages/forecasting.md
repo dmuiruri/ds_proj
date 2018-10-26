@@ -22,6 +22,7 @@ Following the correlations listed in the table above it is evident that Temperat
 ### Regression Results
 
 #### industry
+
 |    coef            |   std err    |    t     | P\>\|t\| | \[0.025   0.975\]  |
 |:-------------------|:-------------|:---------|:-------- |:-------------------|
 |P\:          1.6605 |    0.081     | 20.377   |  0.000   |  1.501      1.820  |
@@ -29,9 +30,9 @@ Following the correlations listed in the table above it is evident that Temperat
 |Ff\:        13.4256 |    8.082     | 1.661    |  0.097   | -2.417     29.268  |
 |Td\:       -10.3302 |    2.385     | -4.331   |  0.000   | -15.006     -5.655 |
 
-|   R-Squared  | Adj. R-squared |    Durbin-Watson  |  Jarque-Bera (prob JB)  |   Skew   | Kurtosis | No. Observation |
-|:-------------|:---------------|:------------------|:------------------------|:---------|:-------- |:----------------|                                    
-|   0.576      |    0.576           |    0.225          |  981.370                |   0.383  |   1.546  |  8717       |
+|   R-Squared  | Adj. R-squared |  Durbin-Watson |  Jarque-Bera   |   Skew   | Kurtosis | No. Observation |
+|:-------------|:---------------|:---------------|:---------------|:---------|:-------- |:-------|                                    
+|   0.576      |    0.576       |    0.225       |  981.370       |   0.383  |   1.546  |  8717  |
 
 
 # Header 1
