@@ -5,7 +5,7 @@ from flask_restful import Api, reqparse # https://flask-restful.readthedocs.io/e
 from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
 
-from resources import HelloSpace, PredictionModelIndustry
+from src.resources import HelloSpace, PredictionModelIndustry
 
 
 app = Flask(__name__)

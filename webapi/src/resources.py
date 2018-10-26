@@ -2,6 +2,7 @@
 from flask_restful import Resource
 from flask import request
 import pandas as pd
+import src.data_models as dm
 
 '''
 https://flask-restful.readthedocs.io/en/latest/api.html#flask_restful.Resource
@@ -22,7 +23,7 @@ class HelloSpace(Resource):
 
 
 class PredictionModelIndustry(Resource):
-      def get(self):
+    def get(self):
         '''
         Get the energy consumption prediction for insdusty
         ---
@@ -31,10 +32,15 @@ class PredictionModelIndustry(Resource):
             description: The prediction data in JSON format
         '''
 
-      
+        df = dm.predict_industry_elec_cons()
+
+        
+
+
+        return df.to_json()
 
 
 
 
 
-        return {'message': "This will be the IC prediction JSON"} 
+        #return {'message': "This will be the IC prediction JSON"} 
