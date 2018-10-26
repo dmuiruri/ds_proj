@@ -38,9 +38,8 @@ Following the correlations listed in the table above it is evident that Temperat
 |U            3.1617 |    0.708     | 4.464    |  0.000   |  1.773      4.550  |
 |Ff          13.4256 |    8.082     | 1.661    |  0.097   | -2.417     29.268  |
 |Td         -10.3302 |    2.385     | -4.331   |  0.000   | -15.006     -5.655 |
-
 |:-------------------------------------|:--------------------------------------|
-|Omnibus\:\ \ \ \ \ \ \ \ \ \ \199.800 |  Durbin-Watson\:                0.225 |
+|Omnibus\:                     199.800 |  Durbin-Watson\:                0.225 |
 |Prob(Omnibus)\:                 0.000 |  Jarque-Bera (JB)\:           981.370 |
 |Skew\:                          0.383 |  Prob(JB)\:                 7.91e-214 |
 |Kurtosis\:                      1.546 |  Cond. No.\:                     473. |
