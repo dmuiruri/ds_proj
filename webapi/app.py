@@ -5,7 +5,7 @@ from flask_restful import Api, reqparse # https://flask-restful.readthedocs.io/e
 from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
 
-from src.resources import HelloSpace, PredictionModelIndustry
+from src.resources import HelloSpace, PredictionModelIndustry, PredictionModelBuilding, PredictionModelConsumer
 
 
 app = Flask(__name__)
@@ -17,8 +17,8 @@ parser = reqparse.RequestParser()
 # activate/register paths
 api.add_resource(HelloSpace, '/hello')
 api.add_resource(PredictionModelIndustry, '/predict/industry')
-#api.add_resource(PredictionModelBuilding, '/predict/building')
-#api.add_resource(PredictionModelConsumer, '/predict/consumer')
+api.add_resource(PredictionModelBuilding, '/predict/building')
+api.add_resource(PredictionModelConsumer, '/predict/consumer')
 
 
 # API documentation setup and configuration
