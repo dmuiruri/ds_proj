@@ -21,18 +21,7 @@ Following the correlations listed in the table above it is evident that Temperat
 
 ### Regression Results
 
-|                                      |                                       |
-|:-------------------------------------|:--------------------------------------|
-| Dep. Variable \:           industry  | R-squared\:                      0.576|
-| Model\:                         OLS  | Adj. R-squared\:                 0.576|
-| Method\:              Least Squares  | F-statistic\:                    2963.|
-| Date\:             Fri, 26 Oct 2018  | Prob (F-sta tistic)\:             0.00|
-| Time\:                     00:44:29  | Log-Likelihoodc\:              -74298.|
-| No. Observation\:              8717  | AIC\:                        1.486e+05|
-| Df Residuals\:                 8713  | BIC\:                        1.486e+05|
-| Df Model\:                       4   |                                       |
-|Covariance Type\:          nonrobust  |                                       |
-
+#### industry
 |    coef            |   std err    |    t     | P\>\|t\| | \[0.025   0.975\]  |
 |:-------------------|:-------------|:---------|:-------- |:-------------------|
 |P\:          1.6605 |    0.081     | 20.377   |  0.000   |  1.501      1.820  |
@@ -40,13 +29,9 @@ Following the correlations listed in the table above it is evident that Temperat
 |Ff\:        13.4256 |    8.082     | 1.661    |  0.097   | -2.417     29.268  |
 |Td\:       -10.3302 |    2.385     | -4.331   |  0.000   | -15.006     -5.655 |
 
-|                                      |                                       |
-|:-------------------------------------|:--------------------------------------|
-|Omnibus\:                     199.800 |  Durbin-Watson\:                0.225 |
-|Prob(Omnibus)\:                 0.000 |  Jarque-Bera (JB)\:           981.370 |
-|Skew\:                          0.383 |  Prob(JB)\:                 7.91e-214 |
-|Kurtosis\:                      1.546 |  Cond. No.\:                     473. |
-
+|   R-Squared  | Adj. R-squared |    Durbin-Watson  |  Jarque-Bera (prob JB)  |   Skew   | Kurtosis | No. Observation |
+|:-------------|:---------------|:------------------|:------------------------|:---------|:-------- |:----------------|                                    
+|   0.576      |    0.576           |    0.225          |  981.370                |   0.383  |   1.546  |  8717       |
 
 
 # Header 1
