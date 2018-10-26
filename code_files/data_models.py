@@ -65,6 +65,23 @@ def get_hourly_descriptive_stats():
     return stats_df
 
 
+def run_regressions():
+    """
+    Run regression models.
+
+    Run multiple regressions to estimate different parameters
+    """
+    weather = dm.get_weather_data()
+    elec_cons = dm.get_all_elec_hourly_data()
+    data = elec_cons.join(weather)  # amalgamated dataset
+    data = data.sort_index().dropna()
+
+    Y = data['industry']
+    X = data[['P', 'U', 'Ff', 'Td']]
+    res = regression_model(Y, X)
+    return res
+
+
 if __name__ == '__main__':
     """Add self tests."""
 
