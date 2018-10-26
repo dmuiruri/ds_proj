@@ -8,6 +8,17 @@ The files are stored locally and there could be some hardcoded paths
 
 
 import pandas as pd
+import os
+
+
+# csv file location in local dev env
+DATA_FILE_PATH = '../data/'
+
+is_heroku = os.environ.get('CURRENT_ENV', None)
+    
+if is_heroku:
+    # csv file location in heroku
+    DATA_FILE_PATH = '/app/data/'
 
 
 def get_weather_data():
@@ -16,7 +27,7 @@ def get_weather_data():
 
     Pulls data from the local directory and returns df of weather features
     """
-    data = pd.io.parsers.read_csv('../data/hourly_resampled_weather_data.csv',
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'hourly_resampled_weather_data.csv',
                                   index_col=0, parse_dates=True).sort_index()
     return data
 
@@ -27,7 +38,7 @@ def get_industrial_electricity_data():
 
     Returns a series of hourly consumption data in kWh.
     """
-    data = pd.io.parsers.read_csv('../data/energy_industrial.csv',
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'energy_industrial.csv',
                                   index_col=0, parse_dates=True)
     return data['Demand/Usage']
 
@@ -38,7 +49,7 @@ def get_building_electricity_data():
 
     Returns a series of hourly consumption data in kWh.
     """
-    data = pd.io.parsers.read_csv('../data/energy_building.csv',
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'energy_building.csv',
                                   index_col=0, parse_dates=True)
     return data['Demand/Usage']
 
@@ -49,7 +60,7 @@ def get_cre_electricity_data():
 
     Returns a series of hourly consumption data in kWh.
     """
-    data = pd.io.parsers.read_csv('../data/cre_total.csv',
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'cre_total.csv',
                                   index_col=0, parse_dates=True)
     return data['Demand/Usage']
 
@@ -73,7 +84,7 @@ def get_ic_weather():
 
     Returns the two datasets as one dataframe
     """
-    data = pd.io.parsers.read_csv('../data/weather_elec_data.csv',
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'weather_elec_data.csv',
                                   index_col=0, parse_dates=True)
     return data
 
@@ -94,7 +105,7 @@ def get_price_data_hourly():
 
     Data is based on exchange prices
     """
-    data = pd.io.parsers.read_csv('../data/price_data_italy_fixed.csv')
+    data = pd.io.parsers.read_csv(DATA_FILE_PATH + 'price_data_italy_fixed.csv')
     data.set_index('DateTime', inplace=True)
     return data['PUN']
 
