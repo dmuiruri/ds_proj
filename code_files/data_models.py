@@ -8,6 +8,7 @@ import data_manager as dm
 import numpy as np
 import statsmodels.api as sm
 from scipy.stats import skew, kurtosis
+from sklearn.model_selection import train_test_split
 
 
 def ic_weather_correlations():
@@ -65,11 +66,11 @@ def get_hourly_descriptive_stats():
     return stats_df
 
 
-def run_regressions():
+def run_industry_regression():
     """
-    Run regression models.
+    Run a regression model for the industry dataset.
 
-    Run multiple regressions to estimate different parameters
+    This regression model estimates the parameters using the entire dataset.
     """
     weather = dm.get_weather_data()
     elec_cons = dm.get_all_elec_hourly_data()
@@ -82,14 +83,42 @@ def run_regressions():
     return res
 
 
+def predict_industry_elec_cons():
+    """
+    Predict electricity consumption for an industrial consumer.
+
+    This function returns predicted values for four weeks (one month)
+    """
+    weather = dm.get_weather_data()
+    elec_cons = dm.get_all_elec_hourly_data()
+    data = elec_cons.join(weather)  # amalgamated dataset
+    data = data.sort_index().dropna()
+
+    train, test = train_test_split(data, train_size=0.85, shuffle=False)
+    print('training: {} obs test: {} obs and test data is {} of the data\n'.
+          format(len(train), len(test), len(test)/len(data)))
+    # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
+    # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
+    Y = train['industry']
+    X = train[['P', 'U', 'Ff', 'Td']]
+    res = sm.OLS(Y, X).fit()
+    predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
+    # print('Predictions are {}\n {}\n {}\n'.format(
+    #       predictions.head(), predictions.head(), predictions.tail()))
+    return predictions
+
+
 if __name__ == '__main__':
     """Add self tests."""
 
-    print('Correlations between industrial Elec consumption and weather\n {}'.
-          format(ic_weather_correlations()))
-    print('Rolling correlations between elec consumption and weather\n {}'.
-          format(ic_weather_roll_corr().head()))
-    print('Run a regression model\n{}'.
-          format(regression_model(dm.get_ic_weather()['Demand/Usage'],
-                 dm.get_ic_weather()[['T', 'P', 'U', 'Ff', 'Td']]).summary()))
-    print('Statistics\n{}\n'.format(get_hourly_descriptive_stats()))
+    # print('Correlations between industrial Elec consumption and weather\n {}'.
+    #       format(ic_weather_correlations()))
+    # print('Rolling correlations between elec consumption and weather\n {}'.
+    #       format(ic_weather_roll_corr().head()))
+    # print('Run a regression model\n{}'.
+    #       format(regression_model(dm.get_ic_weather()['Demand/Usage'],
+    #              dm.get_ic_weather()[['T', 'P', 'U', 'Ff', 'Td']]).summary()))
+    # print('Statistics\n{}\n'.format(get_hourly_descriptive_stats()))
+    # print('Industry regression \n{}\n'.format(run_industry_regression()))
+    print('Industry consumption prediction\n{}'.format
+          (predict_industry_elec_cons))
