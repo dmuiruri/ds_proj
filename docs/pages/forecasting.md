@@ -19,9 +19,9 @@ To setup the regression model, we first check the correlations between the regre
 
 Following the correlations listed in the table above it is evident that Temperature(T) has a high correlation with the Dew point temparature(Td) and humidity, Td however has a low correlation to U. It is therefore imperative that one the two measures of temperature be ommitted from the model.
 
-|                          OLS Regression Results                              |
-|:-----------------------------------------------------------------------------|
-|                                      |                                       |
+### Regression Results
+
+|             -                        |                  -                    |
 |:-------------------------------------|:--------------------------------------|
 | Dep. Variable              industry  | R-squared                        0.576|
 | Model                           OLS  | Adj. R-squared                   0.576|
@@ -32,6 +32,7 @@ Following the correlations listed in the table above it is evident that Temperat
 | Df Residuals                   8713  | BIC                          1.486e+05|
 | Df Model                         4   |                                       |
 |Covariance Type            nonrobust  |                                       |
+
 |    coef            |   std err    |    t     | P>|t|   | [0.025      0.975]| |
 |:-------------------|:-------------|:---------|:--------|:--------------------|
 |P            1.6605 |    0.081     | 20.377   |  0.000  |  1.501       1.820  |
