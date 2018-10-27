@@ -7,12 +7,46 @@
     </style>
 </head>
 <body>
-    <h3>Greeting from index.html</h3>
+    <h3>Greetings from index.html</h3>
+    <p>Here could be prediction graphs.</p>
+
     <div id="graphDiv"></div>
 
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
-        // Our Custom D3 JavaScript here!
+        console.log('Fetching daily sampled industry predictions')
+        // get daily sampled industry predictions
+        fetch('https://ds-2018-webapi.herokuapp.com/predict/industry?sampling=daily')
+        .then(
+            function(response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+                return;
+            }
+
+            response.json().then(function(data) {
+                drawPredictions(data)
+            });
+            }
+        )
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+
+
+        function drawPredictions(data){
+            const dailyPredictions = JSON.parse(data)
+            // one big object
+            console.log(dailyPredictions);
+
+            const consumptionArray = Object.values(dailyPredictions)
+            const keys = Object.keys(dailyPredictions)
+            console.log(consumptionArray);
+            console.log(keys);
+            
+            //TODO: draw some graphs
+        }
     </script>
 </body>
 </html>

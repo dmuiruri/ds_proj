@@ -4,13 +4,14 @@ from flask import jsonify, render_template
 from flask_restful import Api # https://flask-restful.readthedocs.io/en/latest/
 from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
+from flask_cors import CORS # https://flask-cors.readthedocs.io/en/latest/
 
 from src.resources import HelloSpace, PredictionModelIndustry, PredictionModelBuilding, PredictionModelConsumer
 
 
 app = Flask(__name__)
 api = Api(app)
-
+CORS(app)
 
 
 # activate/register paths

@@ -73,7 +73,9 @@ class PredictionModelIndustry(Resource):
             type: string
         responses:
           200:
-            description: The prediction data in JSON format
+            description: The prediction data in JSON format.
+          400:
+            description: Unknown sampling interval was requested.
         '''
         sampling_interval = None
         sampling_interval = sampling_interval_from_request()
