@@ -1,5 +1,5 @@
 
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, abort
 from flask import request
 import pandas as pd
 import src.data_models as dm
@@ -18,6 +18,35 @@ About Swagger and API documentation see:
 https://github.com/gangverk/flask-swagger
 
 '''
+
+def sampling_interval_from_request():
+    '''
+    Parse and return the value of the sampling parameter from client Request
+
+    '''
+    parser = reqparse.RequestParser()
+    parser.add_argument('sampling', type=str)
+    args = parser.parse_args(strict=True) # no other args allowed than sampling
+    return args.sampling
+
+
+def resample_hourly_to_daily(df):
+    df = df.resample('D').sum()
+    print('Daily data: ', df.head())
+    return df
+
+
+def resample_hourly_to_weekly(df):
+    df = df.resample('D').sum().resample('W').sum()
+    print('Weekly data: ', df.head())
+    return df
+
+
+def resample_hourly_to_monthly(df):
+    df = df.resample('D').sum().resample('W').sum().resample('M').sum()
+    print('Monthly data: ', df.head())
+    return df
+
 
 
 class HelloSpace(Resource):
@@ -46,31 +75,26 @@ class PredictionModelIndustry(Resource):
           200:
             description: The prediction data in JSON format
         '''
-        sample_interval = None
-
-        parser = reqparse.RequestParser()
-        parser.add_argument('sampling', type=str)
-        args = parser.parse_args(strict=True) # no other args allowed than sampling
-
-        print('re:', args.items())
+        sampling_interval = None
+        sampling_interval = sampling_interval_from_request()
 
         # this is hourly sampled data
         df = dm.predict_industry_elec_cons()
-                   
-        if sample_interval is None:
+
+        if sampling_interval is None:
             print('Using default hourly sampling interval.')
             return df.to_json()
-        elif sample_interval == 'daily':
+        elif sampling_interval == 'daily':
             print('Daily sampling interval requested.')
-            # TODO resample and return
-        elif sample_interval == 'weekly':
+            return resample_hourly_to_daily(df).to_json()
+        elif sampling_interval == 'weekly':
             print('weekly sampling interval requested.')
-            # TODO resample and return
-        elif sample_interval == 'monthly':
+            return resample_hourly_to_weekly(df).to_json()
+        elif sampling_interval == 'monthly':
             print('Monthly sampling interval requested.')
-            # TODO resample and return
+            return resample_hourly_to_monthly(df).to_json()
         else:
-            raise ValueError('Unknown sampling interval was requested: ', sample_interval)
+           abort(400, error_message='Unknown sampling interval was requested: ' + sampling_interval)
 
 
 class PredictionModelBuilding(Resource):
