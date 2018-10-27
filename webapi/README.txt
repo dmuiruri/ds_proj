@@ -13,6 +13,7 @@ flask            http://flask.pocoo.org/docs/1.0/quickstart/#quickstart
 flask_restful    https://flask-restful.readthedocs.io/en/latest/
 flask_swagger    https://github.com/gangverk/flask-swagger
 flask_swagger_ui https://pypi.org/project/flask-swagger-ui/
+Flask-CORS       https://flask-cors.readthedocs.io/en/latest/
 
 
 * Setup
@@ -21,6 +22,7 @@ pip install flask
 pip install flask_restful
 pip install flask_swagger
 pip install flask_swagger_ui
+pip install flask-cors
 
 
 * Running
