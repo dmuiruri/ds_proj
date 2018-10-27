@@ -1,7 +1,7 @@
 from flask import Flask # http://flask.pocoo.org/docs/1.0/quickstart/#quickstart
 from flask import jsonify, render_template
 
-from flask_restful import Api, reqparse # https://flask-restful.readthedocs.io/en/latest/
+from flask_restful import Api # https://flask-restful.readthedocs.io/en/latest/
 from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
 
@@ -10,7 +10,6 @@ from src.resources import HelloSpace, PredictionModelIndustry, PredictionModelBu
 
 app = Flask(__name__)
 api = Api(app)
-parser = reqparse.RequestParser()
 
 
 
