@@ -56,13 +56,23 @@ function drawPredictions(data, sample_rate){
         bindto: divElementId,
         data: {
             //json: dailyPredictions,
+          x : 'x',
           columns: [
+            ['x'].concat(dateArray),
             [graphXLabel].concat(consumptionArray)
             //['Daily consumption predictions', 30, 200, 100, 400, 150, 250]
           ],
            type: 'bar'
         },
         axis: {
+            x: {
+                type: 'category',
+                tick: {
+                    rotate: (sample_rate == 'daily' ? 75 : 0), // rotation based on the number of datapoints
+                    multiline: false
+                },
+                //height: 200
+            },           
             y: {
               label: { 
                 text: 'Consumption (kWh)',
