@@ -6,12 +6,12 @@ const INDUSTRY_URL = 'https://ds-2018-webapi.herokuapp.com/predict/industry';
 //const BUILDING_URL = 'https://ds-2018-webapi.herokuapp.com/predict/building';
 
 
-function fetchDataAndDrawGraph(electricity_api_url){
+function fetchDataAndDrawGraph(electricity_api_url, sample_rate='daily'){
 
-    console.log('Fetching daily sampled industry predictions')
+    console.log(`Fetching ${sample_rate} sampled industry predictions.`)
 
     // get daily sampled industry predictions
-    fetch(electricity_api_url + '?sampling=daily')
+    fetch(`${electricity_api_url}?sampling=${sample_rate}`)
     .then(
         function(response) {
             if (response.status !== 200) {
@@ -20,7 +20,7 @@ function fetchDataAndDrawGraph(electricity_api_url){
                 return;
             }
             response.json().then(function(data) {
-                drawPredictions(data)
+                drawPredictions(data, sample_rate)
             });
         }
     )
@@ -30,37 +30,63 @@ function fetchDataAndDrawGraph(electricity_api_url){
 }
 
 
-function drawPredictions(data){
-    const dailyPredictions = JSON.parse(data)
+function drawPredictions(data, sample_rate){
+    const predictions = JSON.parse(data)
     // one big object
-    console.log(dailyPredictions);
+    console.log(predictions);
 
-    // array of daily consumption
-    const consumptionArray = Object.values(dailyPredictions)
+    // array of consumption
+    const consumptionArray = Object.values(predictions)
     // array of timestamps (the dayzs)
-    const timestampArray = Object.keys(dailyPredictions)
+    const timestampArray = Object.keys(predictions)
     // convert timestamps to more meaningful dates (format: 24/3/2018) 
     const dateArray = timestampArray.map(function(timestamp) {
         return new Date(parseInt(timestamp)).toLocaleDateString();
     });
-    
+
     console.log(dateArray);
     console.log(consumptionArray);
 
-    //TODO: draw some graphs
-    const graphDiv = document.getElementById('industryGraphDiv');
+    // kind of a haxxx
+    const graphXLabel = `${sample_rate} consumption predictions`
+    const divElementId = `#${sample_rate}IndustryGraphDiv`
 
-    // just printing out the data
-    const h4 = document.createElement("H4");
-    const t = document.createTextNode('The daily consumption data for the graph:');
-    h4.appendChild(t);
-    graphDiv.appendChild(h4)
-    const p = document.createElement("p"); 
-    const dailyData = document.createTextNode(JSON.stringify(dailyPredictions)); 
-    p.appendChild(dailyData); 
-    graphDiv.appendChild(p)
+    // https://c3js.org/gettingstarted.html
+    c3.generate({
+        bindto: divElementId,
+        data: {
+            //json: dailyPredictions,
+          columns: [
+            [graphXLabel].concat(consumptionArray)
+            //['Daily consumption predictions', 30, 200, 100, 400, 150, 250]
+          ],
+           type: 'bar'
+        },
+        axis: {
+            y: {
+              label: { 
+                text: 'Consumption (kWh)',
+                position: 'outer-middle'
+              }
+            }
+          }
+    });
+
+
+    // // just printing out the data
+    // const graphDiv = document.getElementById('dailyIndustryGraphDiv');
+    // const h4 = document.createElement("H4");
+    // const t = document.createTextNode('The daily consumption data for the graph:');
+    // h4.appendChild(t);
+    // graphDiv.appendChild(h4)
+    // const p = document.createElement("p"); 
+    // const dailyData = document.createTextNode(JSON.stringify(dailyPredictions)); 
+    // p.appendChild(dailyData); 
+    // graphDiv.appendChild(p)
 
 }
 
-
-fetchDataAndDrawGraph(INDUSTRY_URL);
+// do the stuff
+//fetchDataAndDrawGraph(INDUSTRY_URL, 'monthly');
+fetchDataAndDrawGraph(INDUSTRY_URL, 'weekly');
+fetchDataAndDrawGraph(INDUSTRY_URL, 'daily');
