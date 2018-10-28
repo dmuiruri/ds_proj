@@ -11,7 +11,6 @@ from scipy.stats import skew, kurtosis
 from sklearn.model_selection import train_test_split
 
 
-
 def ic_weather_correlations():
     """
     Calculate static correlations.
@@ -96,7 +95,7 @@ def predict_industry_elec_cons():
     data = data.sort_index().dropna()
 
     train, test = train_test_split(data, train_size=0.85, shuffle=False)
-    print('training: {} obs test: {} obs and test data is {:2.2%} of the data\n'.
+    print('Test data is {:2.2%} of the data\n'.
           format(len(train), len(test), len(test)/len(data)))
     # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
     # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
@@ -108,6 +107,32 @@ def predict_industry_elec_cons():
     #       predictions.head(), predictions.head(), predictions.tail()))
     return pd.DataFrame({'y^': predictions, 'y': test['industry'],
                         'diff': predictions - test['industry']})
+
+def predict_blg_elec_cons():
+    """
+    Predict electricity consumption for an commercial building.
+
+    This function returns predicted values for four weeks (one month)
+    """
+    weather = dm.get_weather_data()
+    elec_cons = dm.get_all_elec_hourly_data()
+    data = elec_cons.join(weather)  # amalgamated dataset
+    data = data.sort_index().dropna()
+
+    train, test = train_test_split(data, train_size=0.85, shuffle=False)
+    print('Test data is {:2.2%} of the data\n'.
+          format(len(train), len(test), len(test)/len(data)))
+    # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
+    # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
+    Y = train['building']
+    X = train[['P', 'U', 'Ff', 'Td']]
+    res = sm.OLS(Y, X).fit()
+    predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
+    # print('Predictions are {}\n {}\n {}\n'.format(
+    #       predictions.head(), predictions.head(), predictions.tail()))
+    return pd.DataFrame({'y^': predictions, 'y': test['building'],
+                        'diff': predictions - test['building']})
+
 
 
 if __name__ == '__main__':
