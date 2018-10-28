@@ -11,6 +11,7 @@ from scipy.stats import skew, kurtosis
 from sklearn.model_selection import train_test_split
 
 
+
 def ic_weather_correlations():
     """
     Calculate static correlations.
@@ -95,7 +96,7 @@ def predict_industry_elec_cons():
     data = data.sort_index().dropna()
 
     train, test = train_test_split(data, train_size=0.85, shuffle=False)
-    print('training: {} obs test: {} obs and test data is {} of the data\n'.
+    print('training: {} obs test: {} obs and test data is {:2.2%} of the data\n'.
           format(len(train), len(test), len(test)/len(data)))
     # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
     # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
@@ -105,7 +106,8 @@ def predict_industry_elec_cons():
     predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
     # print('Predictions are {}\n {}\n {}\n'.format(
     #       predictions.head(), predictions.head(), predictions.tail()))
-    return predictions
+    return pd.DataFrame({'y^': predictions, 'y': test['industry'],
+                        'diff': predictions - test['industry']})
 
 
 if __name__ == '__main__':
@@ -119,6 +121,4 @@ if __name__ == '__main__':
     #       format(regression_model(dm.get_ic_weather()['Demand/Usage'],
     #              dm.get_ic_weather()[['T', 'P', 'U', 'Ff', 'Td']]).summary()))
     # print('Statistics\n{}\n'.format(get_hourly_descriptive_stats()))
-    # print('Industry regression \n{}\n'.format(run_industry_regression()))
-    print('Industry consumption prediction\n{}'.format
-          (predict_industry_elec_cons))
+    print('Industry regression \n{}\n'.format(run_industry_regression()))
