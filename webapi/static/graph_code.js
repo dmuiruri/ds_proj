@@ -31,24 +31,30 @@ function fetchDataAndDrawGraph(electricity_api_url, sample_rate='daily'){
 
 
 function drawPredictions(data, sample_rate){
-    const predictions = JSON.parse(data)
+    const predictionsAllData = JSON.parse(data)
     // one big object
-    console.log(predictions);
+    console.log(predictionsAllData);
 
-    // array of consumption
-    const consumptionArray = Object.values(predictions)
+    const prediction = predictionsAllData['y^'];
+    const original = predictionsAllData['y'];
+
+    const predictedConsumptionArray = Object.values(prediction)
+    const originalConsumptionArray = Object.values(original)
+
     // array of timestamps (the dayzs)
-    const timestampArray = Object.keys(predictions)
+    const timestampArray = Object.keys(prediction)
     // convert timestamps to more meaningful dates (format: 24/3/2018) 
     const dateArray = timestampArray.map(function(timestamp) {
         return new Date(parseInt(timestamp)).toLocaleDateString();
     });
 
     console.log(dateArray);
-    console.log(consumptionArray);
+    console.log('PRED: ', predictedConsumptionArray);
+    console.log('ORIG: ', originalConsumptionArray);
 
     // kind of a haxxx
-    const graphXLabel = `${sample_rate} consumption predictions`
+    const graphXLabelPrediction = `${sample_rate} consumption prediction`
+    const graphXLabelOriginal = `${sample_rate} consumption`
     const divElementId = `#${sample_rate}IndustryGraphDiv`
 
     // https://c3js.org/gettingstarted.html
@@ -59,7 +65,8 @@ function drawPredictions(data, sample_rate){
           x : 'x',
           columns: [
             ['x'].concat(dateArray),
-            [graphXLabel].concat(consumptionArray)
+            [graphXLabelPrediction].concat(predictedConsumptionArray),
+            [graphXLabelOriginal].concat(originalConsumptionArray)
             //['Daily consumption predictions', 30, 200, 100, 400, 150, 250]
           ],
            type: 'bar'
