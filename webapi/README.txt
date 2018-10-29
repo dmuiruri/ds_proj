@@ -3,7 +3,10 @@
 
 Http API for electricity consumption prediction service
 
-Tiny flask server application to serve electricity consumption prediction API
+https://ds-2018-webapi.herokuapp.com/
+
+Tiny Flask server application to serve electricity consumption prediction API.
+Uses C3.js chart library in graphs (https://c3js.org/).
 
 
 
@@ -33,7 +36,6 @@ Local dev server starts in address http://127.0.0.1:5000/
 
 * API Documentation
 -------------------------------------------------------------------------------
-API documentation available in Swagger format: http://127.0.0.1:5000/api/specs/
-
-API documentation in Raw JSON format: http://127.0.0.1:5000/specs
+API documentation available in Swagger format: 
+https://ds-2018-webapi.herokuapp.com/api/specs/
 

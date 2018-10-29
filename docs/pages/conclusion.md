@@ -2,12 +2,10 @@
 layout: default
 ---
 
-[Introduction](./../index.html) | [Correlation Analysis](./../pages/corr_analysis.html) | [Forecasting](./../pages/forecasting.html) | [Link to page 4](./pages/another-page.html)
+[Introduction](./../index.html) | [Correlation Analysis](./../pages/corr_analysis.html) | [Forecasting](./../pages/forecasting.html) | [Conclusion](./../pages/conclusion.html)
 
-## Regression models
-* What weather elements affect the electricity consumption?
-* Can we predict energy consumption reliably and how far ahead?
-
+## Concluding Remarks
+In general using the correlation analysis, it
 
 # Header 1
 
