@@ -64,7 +64,7 @@ class HelloSpace(Resource):
 class PredictionModelIndustry(Resource):
     def get(self):
         '''
-        Get the energy consumption prediction for industry
+        Energy consumption prediction for industrial building.
         ---
         parameters:
           - in: query
@@ -75,7 +75,7 @@ class PredictionModelIndustry(Resource):
           200:
             description: The prediction data in JSON format.
           400:
-            description: Unknown sampling interval was requested.
+            description: Error if unknown sampling interval was requested.
         '''
         sampling_interval = None
         sampling_interval = sampling_interval_from_request()
@@ -99,10 +99,10 @@ class PredictionModelIndustry(Resource):
            abort(400, error_message='Unknown sampling interval was requested: ' + sampling_interval)
 
 
-class PredictionModelBuilding(Resource):
+class PredictionModelCommercialBuilding(Resource):
     def get(self):
         '''
-        Get the energy consumption prediction for building
+        Energy consumption prediction for a commercial building.
         ---
         parameters:
           - in: query
@@ -112,15 +112,35 @@ class PredictionModelBuilding(Resource):
         responses:
           200:
             description: The prediction data in JSON format
+          400:
+            description: Error if unknown sampling interval was requested.
         '''
-        
-        return {"message": "Building prediction TBD"}
+        sampling_interval = None
+        sampling_interval = sampling_interval_from_request()
+
+        # this is hourly sampled data for consumer building
+        df = dm.predict_blg_elec_cons()
+
+        if sampling_interval is None:
+            print('Using default hourly sampling interval.')
+            return df.to_json()
+        elif sampling_interval == 'daily':
+            print('Daily sampling interval requested.')
+            return resample_hourly_to_daily(df).to_json()
+        elif sampling_interval == 'weekly':
+            print('weekly sampling interval requested.')
+            return resample_hourly_to_weekly(df).to_json()
+        elif sampling_interval == 'monthly':
+            print('Monthly sampling interval requested.')
+            return resample_hourly_to_monthly(df).to_json()
+        else:
+           abort(400, error_message='Unknown sampling interval was requested: ' + sampling_interval)
 
 
-class PredictionModelConsumer(Resource):
+class PredictionModelApartmentBuilding(Resource):
     def get(self):
         '''
-        Get the energy consumption prediction for consumer
+        Energy consumption prediction for an apartment building.
         ---
         parameters:
           - in: query
@@ -130,6 +150,26 @@ class PredictionModelConsumer(Resource):
         responses:
           200:
             description: The prediction data in JSON format
+          400:
+            description: Error if unknown sampling interval was requested.
         '''
-        
-        return {"message": "Consumer prediction TBD"}
+        sampling_interval = None
+        sampling_interval = sampling_interval_from_request()
+
+        # this is hourly sampled data for consumer building
+        df = dm.predict_apt_elec_cons()
+
+        if sampling_interval is None:
+            print('Using default hourly sampling interval.')
+            return df.to_json()
+        elif sampling_interval == 'daily':
+            print('Daily sampling interval requested.')
+            return resample_hourly_to_daily(df).to_json()
+        elif sampling_interval == 'weekly':
+            print('weekly sampling interval requested.')
+            return resample_hourly_to_weekly(df).to_json()
+        elif sampling_interval == 'monthly':
+            print('Monthly sampling interval requested.')
+            return resample_hourly_to_monthly(df).to_json()
+        else:
+           abort(400, error_message='Unknown sampling interval was requested: ' + sampling_interval)

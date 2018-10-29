@@ -6,7 +6,7 @@ from flask_swagger import swagger # https://github.com/gangverk/flask-swagger
 from flask_swagger_ui import get_swaggerui_blueprint # https://pypi.org/project/flask-swagger-ui/
 from flask_cors import CORS # https://flask-cors.readthedocs.io/en/latest/
 
-from src.resources import HelloSpace, PredictionModelIndustry, PredictionModelBuilding, PredictionModelConsumer
+from src.resources import HelloSpace, PredictionModelIndustry, PredictionModelCommercialBuilding, PredictionModelApartmentBuilding
 
 
 app = Flask(__name__)
@@ -17,8 +17,8 @@ CORS(app)
 # activate/register paths
 api.add_resource(HelloSpace, '/hello')
 api.add_resource(PredictionModelIndustry, '/predict/industry')
-api.add_resource(PredictionModelBuilding, '/predict/building')
-api.add_resource(PredictionModelConsumer, '/predict/consumer')
+api.add_resource(PredictionModelCommercialBuilding, '/predict/commercial-building')
+api.add_resource(PredictionModelApartmentBuilding, '/predict/apartment-building')
 
 
 # API documentation setup and configuration
