@@ -1,17 +1,21 @@
 
 console.log('Hello from graph_code.js')
 
-const INDUSTRY_URL = 'https://ds-2018-webapi.herokuapp.com/predict/industry';
-//const CONSUMER_URL = 'https://ds-2018-webapi.herokuapp.com/predict/consumer';
-//const BUILDING_URL = 'https://ds-2018-webapi.herokuapp.com/predict/building';
+// resource endpoints for different customers/usecases
+const INDUSTRIAL_BUILDING= 'industry';
+const COMMERCIAL_BUILDING = 'commercial-building';
+const APARTMENT_BUILDING = 'apartment-building';
+
+const BASE_URL = 'https://ds-2018-webapi.herokuapp.com/predict/'
+const DEV_BASE_URL = 'http://127.0.0.1:5000/predict/'
 
 
-function fetchDataAndDrawGraph(electricity_api_url, sample_rate='daily'){
+function fetchDataAndDrawGraph(customer, sample_rate='daily'){
 
-    console.log(`Fetching ${sample_rate} sampled industry predictions.`)
+    console.log(`Fetching ${sample_rate} sampled ${customer} predictions.`)
 
-    // get daily sampled industry predictions
-    fetch(`${electricity_api_url}?sampling=${sample_rate}`)
+    // get predictions
+    fetch(`${DEV_BASE_URL}${customer}?sampling=${sample_rate}`)
     .then(
         function(response) {
             if (response.status !== 200) {
@@ -20,7 +24,7 @@ function fetchDataAndDrawGraph(electricity_api_url, sample_rate='daily'){
                 return;
             }
             response.json().then(function(data) {
-                drawPredictions(data, sample_rate)
+                drawPredictions(data, sample_rate, customer)
             });
         }
     )
@@ -30,7 +34,7 @@ function fetchDataAndDrawGraph(electricity_api_url, sample_rate='daily'){
 }
 
 
-function drawPredictions(data, sample_rate){
+function drawPredictions(data, sample_rate, customer){
     const predictionsAllData = JSON.parse(data)
     // one big object
     console.log(predictionsAllData);
@@ -52,10 +56,11 @@ function drawPredictions(data, sample_rate){
     console.log('PRED: ', predictedConsumptionArray);
     console.log('ORIG: ', originalConsumptionArray);
 
-    // kind of a haxxx
+    // x axis labels for graphs
     const graphXLabelPrediction = `${sample_rate} consumption prediction`
     const graphXLabelOriginal = `${sample_rate} consumption`
-    const divElementId = `#${sample_rate}IndustryGraphDiv`
+    // div elements for different graphs
+    const divElementId = `#${sample_rate}-${customer}GraphDiv`
 
     // https://c3js.org/gettingstarted.html
     c3.generate({
@@ -104,6 +109,11 @@ function drawPredictions(data, sample_rate){
 }
 
 // do the stuff
-//fetchDataAndDrawGraph(INDUSTRY_URL, 'monthly');
-fetchDataAndDrawGraph(INDUSTRY_URL, 'weekly');
-fetchDataAndDrawGraph(INDUSTRY_URL, 'daily');
+fetchDataAndDrawGraph(INDUSTRIAL_BUILDING, 'weekly');
+fetchDataAndDrawGraph(INDUSTRIAL_BUILDING, 'daily');
+
+fetchDataAndDrawGraph(COMMERCIAL_BUILDING, 'weekly');
+fetchDataAndDrawGraph(COMMERCIAL_BUILDING, 'daily');
+
+fetchDataAndDrawGraph(APARTMENT_BUILDING, 'weekly');
+fetchDataAndDrawGraph(APARTMENT_BUILDING, 'daily');
