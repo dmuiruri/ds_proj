@@ -15,7 +15,7 @@ function fetchDataAndDrawGraph(customer, sample_rate='daily'){
     console.log(`Fetching ${sample_rate} sampled ${customer} predictions.`)
 
     // get predictions
-    fetch(`${DEV_BASE_URL}${customer}?sampling=${sample_rate}`)
+    fetch(`${BASE_URL}${customer}?sampling=${sample_rate}`)
     .then(
         function(response) {
             if (response.status !== 200) {
