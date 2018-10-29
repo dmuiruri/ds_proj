@@ -83,6 +83,22 @@ def run_industry_regression():
     return res
 
 
+# def prediction_model(data, pred_start_date):  # FixMe
+#     """
+#     Run an arima prediction model.
+#
+#     An in-sampling model that generates predictions for 20% of observations.
+#     """
+#     res = sm.tsa.statespace.SARIMAX(
+#             data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 24),
+#             enforce_stationarity=False, enforce_invertibility=False,
+#             trend=None).fit()
+#     pred = res.get_prediction(start=pred_start_date)
+#     pred_values = pred.predicted_mean
+#     return pd.DataFrame({'y^': pred_values, 'y': data.loc[pred_start_date:],
+#                         'diff': pred_values - data.loc[pred_start_date:]})
+
+
 def predict_industry_elec_cons():
     """
     Predict electricity consumption for an industrial consumer.
@@ -92,21 +108,17 @@ def predict_industry_elec_cons():
     weather = dm.get_weather_data()
     elec_cons = dm.get_all_elec_hourly_data()
     data = elec_cons.join(weather)  # amalgamated dataset
-    data = data.sort_index().dropna()
+    data.sort_index(inplace=True)
+    data.interpolate(inplace=True)
 
     train, test = train_test_split(data, train_size=0.85, shuffle=False)
-    print('Test data is {:2.2%} of the data\n'.
-          format(len(train), len(test), len(test)/len(data)))
-    # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
-    # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
     Y = train['industry']
+    #  pred_start_date = test.index[0].strftime('%m/%d/%y %H:%M:%S')
     X = train[['P', 'U', 'Ff', 'Td']]
     res = sm.OLS(Y, X).fit()
     predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
-    # print('Predictions are {}\n {}\n {}\n'.format(
-    #       predictions.head(), predictions.head(), predictions.tail()))
-    return pd.DataFrame({'y^': predictions, 'y': test['industry'],
-                        'diff': predictions - test['industry']})
+    return pd.DataFrame({'y^': predictions, 'y': test['building'],
+                        'diff': predictions - test['building']})
 
 
 def predict_blg_elec_cons():
@@ -121,16 +133,10 @@ def predict_blg_elec_cons():
     data = data.sort_index().dropna()
 
     train, test = train_test_split(data, train_size=0.85, shuffle=False)
-    print('Test data is {:2.2%} of the data\n'.
-          format(len(train), len(test), len(test)/len(data)))
-    # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
-    # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
     Y = train['building']
     X = train[['P', 'U', 'Ff', 'Td']]
     res = sm.OLS(Y, X).fit()
     predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
-    # print('Predictions are {}\n {}\n {}\n'.format(
-    #       predictions.head(), predictions.head(), predictions.tail()))
     return pd.DataFrame({'y^': predictions, 'y': test['building'],
                         'diff': predictions - test['building']})
 
@@ -149,14 +155,10 @@ def predict_apt_elec_cons():
     train, test = train_test_split(data, train_size=0.85, shuffle=False)
     print('Test data is {:2.2%} of the data\n'.
           format(len(train), len(test), len(test)/len(data)))
-    # print('Train data head\n{}\n {}\n'.format(train.head(), train.tail()))
-    # print('Test data head\n{}\n {}\n'.format(test.head(), test.tail()))
     Y = train['cre']
     X = train[['P', 'U', 'Ff', 'Td']]
     res = sm.OLS(Y, X).fit()
     predictions = res.predict(test[['P', 'U', 'Ff', 'Td']])
-    # print('Predictions are {}\n {}\n {}\n'.format(
-    #       predictions.head(), predictions.head(), predictions.tail()))
     return pd.DataFrame({'y^': predictions, 'y': test['cre'],
                         'diff': predictions - test['cre']})
 
