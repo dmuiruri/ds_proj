@@ -11,5 +11,6 @@ Weather variables correlated among themselves indicate a strong correlation betw
 
 Regression models indicate that Pressure (P), Humidity (U), Wind speed (Ff) and Dew point temperature (Td) are all significant variables in explaining the consumption of electricity. These tested models were however observed to have low predictive power and therefore could not generate reliable forecasts on electricity consumption but they do provide information on how select weather parameters affect electricity consumption.
 
+To improve the predictive power to these models, additional variables would be required to added to the equations.
 
 [back](./../pages/conclusion.html)
