@@ -21,7 +21,7 @@ Following the correlations listed in the table above it is evident that Temperat
 
 ### Regression Results
 
-#### industry
+#### Industry Consumer
 
 |    coef            |   std err    |    t     | P\>\|t\| | \[0.025   0.975\]  |
 |:-------------------|:-------------|:---------|:-------- |:-------------------|
@@ -38,14 +38,36 @@ This results indicate that the selected weather parameters are significant in ex
 
 #### Commercial Building
 
+|    coef            |   std err    |    t     | P\>\|t\| | 
+|:-------------------|:-------------|:---------|:-------- |
+|P\:          0.7326 |    0.010     | 74.17    |  0.000   |  
+|U\:         -2.6653 |    0.086     | -31.05   |  0.000   |  
+|Ff\:        25.4088 |    0.980     | 25.936   |  0.000   |
+|Td\:         0.5557 |    0.289     | 1.922    |  0.055   |
 
-### Model
-$$
-   |\psi_1\rangle = a|0\rangle + b|1\rangle
-$$
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+|   R-Squared  | Adj. R-squared |  Durbin-Watson |  Jarque-Bera   |   Skew   | Kurtosis | No. Observation |
+|:-------------|:---------------|:---------------|:---------------|:---------|:-------- |:-------|                                    
+|   0.910      |    0.910       |     0.122      |   401.609      |    0.301 |    2.138 |  8724  |
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+Regressing weather data on electricity consumption on a building indicates that weather does drive consumption based on the highly significant parameters obtained from the regression. Weather appears to account for a signifiance amount of variance on the consumptions. Additionally a weather parameter such as temperature (Td) has a positive relationship with electricity consumption while humidity has a negative effect when all other parameters are held constant. 
+Despite weather being a significant driver of energy consumption in a commercial building, it is worth noting that the residuals from this model still indicate non-normality features; skew (0.301) and kurtosis (2.138).
+
+#### Apartment Block
+
+
+|    coef            |   std err    |    t     | P\>\|t\| | 
+|:-------------------|:-------------|:---------|:-------- |
+|P\:           0.782 |    0.017     | 46.806   |  0.000   |  
+|U\:         -5.4652 |    0.145     |-37.637   |  0.000   |  
+|Ff\:        23.9900 |    1.658     | 14.473   |  0.000   | 
+|Td\:         5.4926 |    0.489     | 11.230   |  0.000   |
+
+|   R-Squared  | Adj. R-squared |  Durbin-Watson |  Jarque-Bera   |   Skew   | Kurtosis | No. Observation |
+|:-------------|:---------------|:---------------|:---------------|:---------|:-------- |:-------|                                    
+|   0.696      |    0.198       |    0.198       |  1045.021      |   0.813  |   3.480  |  8728  |
+
+Similar to a commercial building, weather parameters are highly significant when regressed on consumption in an apartment block. An increase in humidity leads to reduction in electricity consumption, all other weather parameters indicate a positive linear relationship where a unit increase in the parameter leads to an increase in the consumption of electricity.
+
 
 
 
