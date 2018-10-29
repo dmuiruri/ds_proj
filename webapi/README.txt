@@ -36,5 +36,6 @@ Local dev server starts in address http://127.0.0.1:5000/
 
 * API Documentation
 -------------------------------------------------------------------------------
-API documentation available in Swagger format: http://127.0.0.1:5000/api/specs/
+API documentation available in Swagger format: 
+https://ds-2018-webapi.herokuapp.com/api/specs/
 
