@@ -5,124 +5,14 @@ layout: default
 [Introduction](./../index.html) | [Correlation Analysis](./../pages/corr_analysis.html) | [Forecasting](./../pages/forecasting.html) | [Conclusion](./../pages/conclusion.html)
 
 ## Concluding Remarks
-In general using the correlation analysis, it
+This study started was initiated based on the hypothesis that weather can be used to understand electricity demand based on various consumer proxies. The overall results indicated that the weather has varying correlation across different electricity consumers. Industrial electricity consumption has low correlation to weather parameters which are negative in magnitude for temperature and pressure variables. The electricity consumption in a commercial and apartment block are uniquely negatively correlated with humidity which has a positive correlations with consumption in an industrial setting.
 
-# Header 1
+Weather variables correlated among themselves indicate a strong correlation between normal outdoor temperature(T) and the dew point temperature(Td). For this reason one of these variables must be eliminated from the subsequent regression models to control for potential multicollinearity.
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+Regression models indicate that Pressure (P), Humidity (U), Wind speed (Ff) and Dew point temperature (Td) are all significant variables in explaining the consumption of electricity. These tested models were however observed to have low predictive power and therefore could not generate reliable forecasts on electricity consumption but they do provide information on how select weather parameters affect electricity consumption.
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
-
-### Just an image header H3
-
-![This img is in assets/images folder](./assets/images/building.png)
+For improved forecasting other autoregressive models were applied with increased performance.
 
 
-### Definition lists can be used with HTML syntax.
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
-
-
-This is one of the sub pages
-
-
-[back](./../pages/forecasting.html)
+[back](./../pages/conclusion.html)
