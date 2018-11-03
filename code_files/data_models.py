@@ -79,8 +79,7 @@ def run_industry_regression():
 
     Y = data['industry']
     X = data[['P', 'U', 'Ff', 'Td']]
-    res = regression_model(Y, X)
-    return res
+    return regression_model(Y, X)
 
 
 # def prediction_model(data, pred_start_date):  # FixMe
