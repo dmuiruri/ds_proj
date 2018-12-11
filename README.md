@@ -1,5 +1,5 @@
 # ds_proj
-Repository for energy project
+This repository hosts an energy modelling project. We aim to determine how weather affects energy consumption through various modelling techniques.
 
 Project pages:
 https://dmuiruri.github.io/ds_proj/
