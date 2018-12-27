@@ -36,10 +36,18 @@ pip install scipy
 pip install sklearn
 
 
-* Running
+* Running without Docker
 -------------------------------------------------------------------------------
 In terminal go to webapi folder and execute "flask run"
 Local dev server starts in address http://127.0.0.1:5000/ 
+
+
+* Running with Docker
+-------------------------------------------------------------------------------
+In terminal go to webapi folder (location of the Dockerfile)
+build image: "docker build -t flask-api ."
+run image:   "docker run -p 5000:5000 flask-api"
+Container starts and serves the api in address http://127.0.0.1:5000
 
 
 * API Documentation
