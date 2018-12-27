@@ -11,15 +11,15 @@ import pandas as pd
 import os
 
 
-# csv file location in local dev env
+# csv file location in local dev env (and no docker)
 DATA_FILE_PATH = '../data/'
 
-is_heroku = os.environ.get('CURRENT_ENV', None)
+execute_in_heroku = os.environ.get('CURRENT_ENV', None)
+execute_in_docker_container = os.environ.get('DOCKER_ENV', None)
     
-if is_heroku:
-    # csv file location in heroku
+if execute_in_heroku or execute_in_docker_container:
     DATA_FILE_PATH = '/app/data/'
-
+  
 
 def get_weather_data():
     """

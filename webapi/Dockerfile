@@ -1,11 +1,9 @@
 # Dockerfile for flask web api
 
-
 FROM ubuntu:16.04 
 
-# install curl 
-RUN apt-get update && apt-get install -y curl 
-
+# refresh repository
+RUN apt-get update 
 
 # install python 3.6
 # https://docs.python-guide.org/starting/install3/linux/
@@ -15,8 +13,6 @@ RUN apt-get update
 RUN apt-get install -y python3.6
 RUN apt install -y python3-pip
 RUN pip3 install --upgrade pip
-
-# WORKDIR /usr/src/app/webapi
 
 
 # install packages
@@ -33,18 +29,13 @@ RUN pip3 install sklearn
 
 COPY . /app
 WORKDIR /app
-# RUN pip install -r requirements.txt
 ENTRYPOINT ["python3"]
-
-#COPY . .
 
 EXPOSE 5000
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
+ENV DOCKER_ENV=true
 
 # CMD is executed after docker run
-# CMD [ "flask", "run" ]
 CMD ["app.py"]
-
-
